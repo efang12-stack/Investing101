@@ -13,6 +13,8 @@
 		AAAE396F25AE9AA7009CF83A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAE396E25AE9AA7009CF83A /* Preview Assets.xcassets */; };
 		AAAE397A25AE9AA7009CF83A /* Investing101Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE397925AE9AA7009CF83A /* Investing101Tests.swift */; };
 		AAAE398525AE9AA7009CF83A /* Investing101UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE398425AE9AA7009CF83A /* Investing101UITests.swift */; };
+		AABE853D25AFE07E00ECE51E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE853C25AFE07E00ECE51E /* Color.swift */; };
+		AABE855525AFE52E00ECE51E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE855425AFE52E00ECE51E /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		AAAE398025AE9AA7009CF83A /* Investing101UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Investing101UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAE398425AE9AA7009CF83A /* Investing101UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Investing101UITests.swift; sourceTree = "<group>"; };
 		AAAE398625AE9AA7009CF83A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AABE853C25AFE07E00ECE51E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		AABE855425AFE52E00ECE51E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			children = (
 				AAAE396725AE9AA6009CF83A /* Investing101App.swift */,
 				AAAE396925AE9AA6009CF83A /* ContentView.swift */,
+				AABE855425AFE52E00ECE51E /* MenuView.swift */,
+				AABE853B25AFE06F00ECE51E /* Colors */,
 				AAAE396B25AE9AA7009CF83A /* Assets.xcassets */,
 				AAAE397025AE9AA7009CF83A /* Info.plist */,
 				AAAE396D25AE9AA7009CF83A /* Preview Content */,
@@ -128,6 +134,14 @@
 				AAAE398625AE9AA7009CF83A /* Info.plist */,
 			);
 			path = Investing101UITests;
+			sourceTree = "<group>";
+		};
+		AABE853B25AFE06F00ECE51E /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				AABE853C25AFE07E00ECE51E /* Color.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAAE396A25AE9AA6009CF83A /* ContentView.swift in Sources */,
+				AABE855525AFE52E00ECE51E /* MenuView.swift in Sources */,
 				AAAE396825AE9AA6009CF83A /* Investing101App.swift in Sources */,
+				AABE853D25AFE07E00ECE51E /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
