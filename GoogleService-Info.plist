@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>611167489996-kt5oe146lblbj914qgoamug3t0r00huj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.611167489996-kt5oe146lblbj914qgoamug3t0r00huj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCjd5ZRyQZoYzDyKFnB3lV9pjg1NJtB46M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>611167489996</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ethanfang.Investing101</string>
+	<key>PROJECT_ID</key>
+	<string>investment101-3d985</string>
+	<key>STORAGE_BUCKET</key>
+	<string>investment101-3d985.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:611167489996:ios:28abad464871294de05769</string>
+</dict>
+</plist>

@@ -15,7 +15,7 @@ extension Color {
     }
     
     
-    static let lightBlue = Color.rgb(r: 0, g: 191, b: 255)
+    static let darkGray = Color.rgb(r: 96, g: 96, b: 96)
     
     
 }
