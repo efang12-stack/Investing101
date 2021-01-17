@@ -9,7 +9,8 @@ import SwiftUI
 import AVKit
 
 struct VideosView: View {
-    
+    @State var chosenCourse: Course
+    @Binding var show: Bool
     @ObservedObject var videoManager = VideoManager()
     
     var body: some View {
@@ -22,15 +23,16 @@ struct VideosView: View {
                     VideoPlayer(player: AVPlayer(url: url))
                 }
             }
+            Text(chosenCourse.courseTitle)
         }
         .onAppear() {
-            self.videoManager.fetchData(collectionName: "videos")
+            self.videoManager.fetchData(collectionName: chosenCourse.dataKey)
         }
     }
 }
 
 struct VideosView_Previews: PreviewProvider {
     static var previews: some View {
-        VideosView()
+        VideosView(chosenCourse: Course(courseTitle: "", image: "", description: "", dataKey: ""), show: .constant(true))
     }
 }

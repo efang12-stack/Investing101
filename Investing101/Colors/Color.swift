@@ -15,6 +15,7 @@ extension Color {
     }
     
     
+    static let lightGray = Color.rgb(r: 245, g: 245, b: 245)
     static let darkGray = Color.rgb(r: 96, g: 96, b: 96)
     
     
