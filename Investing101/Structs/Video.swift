@@ -9,10 +9,11 @@ import Foundation
 
 struct Video: Identifiable {
     
-    var id: String = UUID().uuidString
+    var id = UUID()
     var title: String
     var summary: String
     var url: String
+    
     
     
 }

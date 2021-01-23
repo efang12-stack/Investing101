@@ -12,14 +12,14 @@ import AVKit
 struct CoursesView: View {
     
     var courses: [Course] = [
-        Course(courseTitle: "Financial Literacy", image: "financiallit", description: "The course for financial literacy is learning how to effectively use financial skills.", dataKey: "videos"),
-        Course(courseTitle: "Investing", image: "investing", description: "Investing is a course designed to learn how to spend money.", dataKey: "investment"),
-        Course(courseTitle: "Entrepreneurship", image: "entrepreneur", description: "Entrepreneurship is a way to learn how to build a company.", dataKey: "entrepreneurship"),
-        Course(courseTitle: "Professional Development", image: "development", description: "Professional development is a way to develop a company.", dataKey: "")
+        Course(courseTitle: "Financial Literacy", image: "financiallit", description: "A course over the foundations of personal financial literacy (saving, budgeting, loan management, investing, etc).", dataKey: "videos", colorBackground1: Color.litColor1, colorBackground2: Color.litColor2),
+        Course(courseTitle: "Investing", image: "investing", description: "Introductory lessons over investing, equity analysis and other concepts to get you started in the stock market.", dataKey: "investment", colorBackground1: Color.investColor1, colorBackground2: Color.investColor2),
+        Course(courseTitle: "Entrepreneurship", image: "entrepreneur", description: "Learn how to create your own business through lectures over idea valuation, operations, and cost-management.", dataKey: "entrepreneurship", colorBackground1: Color.entreColor1, colorBackground2: Color.entreColor2),
+        Course(courseTitle: "Professional Development", image: "development", description: "Project yourself as professional through lessons that cover skills such as resume building, LinkedIn, interview skills, etc.", dataKey: "professional", colorBackground1: Color.profesColor1, colorBackground2: Color.profesColor2)
     ]
     
     @State var show = false
-    @State var chosenCourse: Course = Course(courseTitle: "Financial Literacy", image: "financiallit", description: "The course for financial literacy is learning how to effectively use financial skills.", dataKey: "videos")
+    @State var chosenCourse: Course = Course(courseTitle: "Financial Literacy", image: "financiallit", description: "The course for financial literacy is learning how to effectively use financial skills.", dataKey: "videos", colorBackground1: Color.blue, colorBackground2: Color.red)
     
     var body: some View {
         
@@ -108,11 +108,12 @@ struct Course: Identifiable {
     var image: String
     var description: String
     var dataKey: String
-    
+    var colorBackground1: Color
+    var colorBackground2: Color
 }
 
 struct CoursesView_Previews: PreviewProvider {
     static var previews: some View {
-        CoursesView( chosenCourse: Course(courseTitle: "", image: "", description: "", dataKey: ""))
+        CoursesView( chosenCourse: Course(courseTitle: "", image: "", description: "", dataKey: "", colorBackground1: Color.blue, colorBackground2: Color.red))
     }
 }

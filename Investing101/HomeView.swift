@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @ObservedObject var videoManager = VideoManager()
+    
     var body: some View {
+        
+
         NavigationView{
         ZStack(alignment: .leading) {
             GeometryReader{_ in
@@ -41,18 +46,67 @@ struct HomeView: View {
                     .padding(.top, -75)
                     
                     
-                    
-                    HStack{
-                        Text("Recent Videos")
-                            .bold()
-                            .foregroundColor(Color.darkGray)
-                            .padding(.leading)
+                    ScrollView{
                         
-                        Spacer()
+                        VStack {
+                        
+                            HStack{
+                                
+                                Text("Video Of The Week")
+                                    .bold()
+                                    .foregroundColor(Color.darkGray)
+                                    .padding(.leading)
+                            
+                                Spacer()
+                            }
+                            .padding(.top, 10)
+                            
+                            
+                                if videoManager.videos.count == 0 {
+                                    
+                                    HStack {
+                                        Text("Loading")
+                                        
+                                        Spacer()
+                                    }
+                                }
+                                else {
+                                    HStack{
+                                        if let url = videoManager.videos[0].url {
+                                            
+                                            
+                                            Webview(url: url)
+                                                .frame(width: 150, height: 100)
+                                                .cornerRadius(10)
+                                            
+                                                
+                                        }
+                                        
+                                        VStack{
+                                            Text(videoManager.videos[0].title)
+                                                .bold()
+                                                .frame(width: 200)
+                                            
+                                            Text(videoManager.videos[0].summary)
+                                                .frame(width: 200)
+                                                .multilineTextAlignment(.center)
+                                        }
+                                        .padding(.leading, 5)
+                                        
+                                        
+                                    }
+                                }
+                            
+                        
+                            Spacer()
+                        }
                     }
-                    .padding(.top, 10)
+                    .onAppear() {
+                        self.videoManager.fetchData(collectionName: "special")
+                       
+                    }
                     
-                    Spacer()
+                    
                 }
             }
             

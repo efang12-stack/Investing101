@@ -17,6 +17,12 @@ extension Color {
     
     static let lightGray = Color.rgb(r: 245, g: 245, b: 245)
     static let darkGray = Color.rgb(r: 96, g: 96, b: 96)
-    
-    
+    static let litColor1 = Color.rgb(r: 255, g: 229, b: 204)
+    static let litColor2 = Color.rgb(r: 153, g: 204, b: 255)
+    static let investColor1 = Color.rgb(r: 224, g: 235, b: 234)
+    static let investColor2 = Color.rgb(r: 106, g: 212, b: 201)
+    static let entreColor1 = Color.rgb(r: 255, g: 255, b: 255)
+    static let entreColor2 = Color.rgb(r: 128, g: 128, b: 128)
+    static let profesColor1 = Color.rgb(r: 255, g: 204, b: 153)
+    static let profesColor2 = Color.rgb(r: 0, g: 76, b: 153)
 }
