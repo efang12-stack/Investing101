@@ -22,6 +22,7 @@ struct ArticlesView: View {
     
     @State var chosenArticle : Article = Article(title: "Test", text: "test", image: "test", category: "Fin Tech", author: "Test")
     
+    @State var show: Bool = false
     
     var body: some View {
         
@@ -55,42 +56,40 @@ struct ArticlesView: View {
                         ForEach(articleSection, id: \.id) { section in
                             Section(header: Text(section.name).bold()) {
                                 ForEach(section.articles) { article in
-                                    
+                                        
                                     ZStack {
                                         
                                         HStack(spacing: 50){
-                                            
-                                            VStack {
                                                 
-                                                Text(article.title)
-                                                    .font(.system(size: 19, weight: .bold))
-                                                    .frame(width: 200, height: 130, alignment: .leading)
+                                                VStack {
                                                     
-                                                    
-                                                Text("By "+(article.author))
-                                                    .foregroundColor(Color.darkGray)
-                                                    .font(.custom("Verdana", size: 12))
-                                                    .frame(width: 200, alignment: .leading)
-                                            }
-                                            
-                                            WebImage(url: URL(string: article.image))
-                                                .resizable()
-                                                .frame(width: 120, height: 120)
-                                                .cornerRadius(10)
+                                                    Text(article.title)
+                                                        .font(.system(size: 19, weight: .bold))
+                                                        .frame(width: 200, height: 130, alignment: .leading)
+                                                        
+                                                        
+                                                    Text("By "+(article.author))
+                                                        .foregroundColor(Color.darkGray)
+                                                        .font(.custom("Verdana", size: 12))
+                                                        .frame(width: 200, alignment: .leading)
+                                                }
+                                                
+                                                WebImage(url: URL(string: article.image))
+                                                    .resizable()
+                                                    .frame(width: 100, height: 100)
+                                                    .cornerRadius(10)
 
-                                            
+                                                
                                         }
                                         
-                                        NavigationLink(destination: DisplayView(chosenArticle: article)){
+                                        NavigationLink(
+                                            destination: DisplayView(chosenArticle: article)){
                                             
-                                           
-                                            
-                                        }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0)
-                                        .onTapGesture {
+                                        }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0).onTapGesture {
                                             chosenArticle = article
                                         }
                                     }
-                                    
+                        
                                     
                                 
                                 }

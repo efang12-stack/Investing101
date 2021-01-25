@@ -11,46 +11,80 @@ import SDWebImageSwiftUI
 struct DisplayView: View {
     
     @State var chosenArticle: Article
-    @Binding var show: Bool
+   
     
     var body: some View {
+        
+    
             
-            ZStack {
+                VStack{
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Text(chosenArticle.category)
+                            .foregroundColor(Color.black)
+                            .font(.system(size: 17))
+                            .bold()
+                            .shadow(radius: 3)
+                            .padding(.bottom, 20)
+                        
+                       Spacer()
+                            
+                    }
+                    .padding(.top, 15)
+                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    .background(Color.lightGray)
+                    .overlay(Rectangle().stroke(Color.primary.opacity(0.3), lineWidth: 2).shadow(radius: 10).edgesIgnoringSafeArea(.top))
+                    
+                    
             
-            
-            
-            ScrollView{
+                    ScrollView{
                 
-                VStack {
+                        VStack {
                 
-                    Text(chosenArticle.category)
-                        .foregroundColor(Color.darkGray)
-                        .padding(.bottom, 15)
+                                    
+                            Text(chosenArticle.title)
+                                .font(.custom("Arial", size: 30))
+                                .bold()
+                                .padding([.leading,.trailing], 30)
+                                
                 
-                    Text(chosenArticle.title)
-                        .font(.title)
+                            WebImage(url: URL(string: chosenArticle.image))
+                                .resizable()
+                                .frame(width: 350, height: 250)
+                                .cornerRadius(5)
                 
-                    WebImage(url: URL(string: chosenArticle.image))
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(10)
+                            HStack {
+                                
+                                Text("by "+(chosenArticle.author))
+                                    .foregroundColor(Color.darkerGray)
+                                    .font(.custom("Verdana", size: 18))
+                                    .padding([.bottom, .leading], 30)
+                                    .padding(.top, 5)
+                                
+                                Spacer()
+                            }
                 
-                    Text("By: "+(chosenArticle.author))
-                        .padding(.bottom, 20)
+                            Text(chosenArticle.text)
+                                .font(.custom("Times New Roman", size: 23))
+                                .padding([.leading, .trailing], 20)
                 
-                    Text(chosenArticle.text)
-                
-                    Spacer()
+                            Spacer()
+                        }
+                    }
+                    .padding(.top, 40)
+                    .zIndex(1)
+        
                 }
-            }
-        }
-            
-       
+                .ignoresSafeArea(.all, edges: .top)
+               
+        
     }
 }
 
 struct DisplayView_Previews: PreviewProvider {
     static var previews: some View {
-        DisplayView(chosenArticle: Article(title: "How to Build A Company", text: "This is the first part to building a company", image: "", category: "Fin Tech", author: "Ethan Fang"), show: .constant(true))
+        DisplayView(chosenArticle: Article(title: "How to Build A Company", text: "This is the first part to building a company", image: "", category: "Fin Tech", author: "Ethan Fang"))
     }
 }
