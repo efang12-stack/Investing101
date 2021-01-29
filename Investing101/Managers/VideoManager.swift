@@ -49,11 +49,12 @@ class VideoManager: ObservableObject {
             let data = queryDocumentSnapshot.data()
             let title = data["title"] as? String ?? ""
             let text = data["text"] as? String ?? ""
+            let newText = text.replacingOccurrences(of: "\\n", with: "\n")
             let image = data["image"] as? String ?? ""
             let category = data["category"] as? String ?? ""
             let author = data["author"] as? String ?? ""
             
-            return Article(id: .init(), title: title, text: text, image: image, category: category, author: author)
+            return Article(id: .init(), title: title, text: newText, image: image, category: category, author: author)
           }
             
             

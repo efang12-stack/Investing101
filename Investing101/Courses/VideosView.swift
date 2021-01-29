@@ -39,7 +39,8 @@ struct VideosView: View {
             
             if videoManager.videos.count == 0 {
                 VStack{
-                Text("Loading Videos")
+                    
+                    LoadingView()
                     
                     Spacer()
                 }

@@ -16,8 +16,9 @@ struct ArticlesView: View {
         Sectional(name: "Fin Tech", articles: []),
         Sectional(name: "Cryptocurrency", articles: []),
         Sectional(name: "Investing Tips", articles: []),
-        Sectional(name: "Real Estate", articles: []),
-        Sectional(name: "Market Opportunities", articles: [])
+        Sectional(name: "Professional Development", articles: []),
+        Sectional(name: "Market Opportunities", articles: []),
+        Sectional(name: "Quantitative Finance", articles: [])
     ]
     
     @State var chosenArticle : Article = Article(title: "Test", text: "test", image: "test", category: "Fin Tech", author: "Test")
@@ -44,7 +45,9 @@ struct ArticlesView: View {
                 if videoManager.articles.count == 0 {
                     VStack{
                         
-                        Text("Loading Articles")
+
+                        
+                        LoadingView()
                         
                         Spacer()
                     }
@@ -100,8 +103,9 @@ struct ArticlesView: View {
                     }
                     .onAppear{
                         
-                        for i in 0...4 {
+                        for i in 0...5 {
                             for article in videoManager.articles {
+                                
                                 if articleSection[i].name == article.category {
                                     articleSection[i].articles.append(article)
                                 }
@@ -109,7 +113,7 @@ struct ArticlesView: View {
                         }
                     }
                     .onDisappear {
-                        for i in 0...4 {
+                        for i in 0...5 {
                             articleSection[i].articles = []
                         }
                     }
@@ -128,6 +132,7 @@ struct ArticlesView: View {
         }
     }
 }
+
 
 struct ArticlesView_Previews: PreviewProvider {
     static var previews: some View {

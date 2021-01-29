@@ -37,7 +37,7 @@ struct CoursesView: View {
                     Spacer()
                 }
                 .overlay(Rectangle().stroke(Color.primary.opacity(0.3), lineWidth: 2).shadow(radius: 6).edgesIgnoringSafeArea(.top))
-                .padding(.bottom, 20)
+                .padding(.bottom, 10)
                 .zIndex(1)
                 
                 ZStack{

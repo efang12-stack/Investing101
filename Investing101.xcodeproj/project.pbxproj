@@ -11,6 +11,7 @@
 		2A469B44675E0A620EDCCE8E /* Pods_Investing101_Investing101UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B69C97DAC6AB37913562698 /* Pods_Investing101_Investing101UITests.framework */; };
 		AA282E9C25B2263700B9B97B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA282E9B25B2263700B9B97B /* GoogleService-Info.plist */; };
 		AA282EB525B228A200B9B97B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA282EB425B228A200B9B97B /* AppDelegate.swift */; };
+		AA58D9E525C10AE500383AFD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58D9E425C10AE500383AFD /* LoadingView.swift */; };
 		AA65126525B133DD00D84D49 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65126425B133DD00D84D49 /* HomeView.swift */; };
 		AA65126A25B1349800D84D49 /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65126925B1349800D84D49 /* ArticlesView.swift */; };
 		AA65126F25B134A700D84D49 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65126E25B134A700D84D49 /* ContactView.swift */; };
@@ -57,6 +58,7 @@
 		9456EF20BC54EB2DCACE4DC0 /* Pods-Investing101-Investing101UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investing101-Investing101UITests.release.xcconfig"; path = "Target Support Files/Pods-Investing101-Investing101UITests/Pods-Investing101-Investing101UITests.release.xcconfig"; sourceTree = "<group>"; };
 		AA282E9B25B2263700B9B97B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA282EB425B228A200B9B97B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA58D9E425C10AE500383AFD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AA65126425B133DD00D84D49 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AA65126925B1349800D84D49 /* ArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesView.swift; sourceTree = "<group>"; };
 		AA65126E25B134A700D84D49 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
@@ -191,9 +193,9 @@
 				AAAE396925AE9AA6009CF83A /* ContentView.swift */,
 				AA65126425B133DD00D84D49 /* HomeView.swift */,
 				AA87790125B354800002AE29 /* Courses */,
-				AA65126925B1349800D84D49 /* ArticlesView.swift */,
-				AACD842D25BB8719006F807F /* DisplayView.swift */,
-				AA65126E25B134A700D84D49 /* ContactView.swift */,
+				AAB82C6525C25B7300D6F2F6 /* Articles */,
+				AAB82C6625C25B8A00D6F2F6 /* Contact */,
+				AA58D9E425C10AE500383AFD /* LoadingView.swift */,
 				AA8778F325B28F800002AE29 /* Structs */,
 				AA8778F225B28F760002AE29 /* Managers */,
 				AABE853B25AFE06F00ECE51E /* Colors */,
@@ -228,6 +230,23 @@
 				AAAE398625AE9AA7009CF83A /* Info.plist */,
 			);
 			path = Investing101UITests;
+			sourceTree = "<group>";
+		};
+		AAB82C6525C25B7300D6F2F6 /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				AA65126925B1349800D84D49 /* ArticlesView.swift */,
+				AACD842D25BB8719006F807F /* DisplayView.swift */,
+			);
+			path = Articles;
+			sourceTree = "<group>";
+		};
+		AAB82C6625C25B8A00D6F2F6 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				AA65126E25B134A700D84D49 /* ContactView.swift */,
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 		AABE853B25AFE06F00ECE51E /* Colors */ = {
@@ -481,6 +500,7 @@
 				AA65126F25B134A700D84D49 /* ContactView.swift in Sources */,
 				AA8778EE25B28CCA0002AE29 /* VideoManager.swift in Sources */,
 				AA282EB525B228A200B9B97B /* AppDelegate.swift in Sources */,
+				AA58D9E525C10AE500383AFD /* LoadingView.swift in Sources */,
 				AA65127925B13D1700D84D49 /* CoursesView.swift in Sources */,
 				AA65126525B133DD00D84D49 /* HomeView.swift in Sources */,
 				AACD842E25BB8719006F807F /* DisplayView.swift in Sources */,
@@ -659,7 +679,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethanfang.Investing101;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -682,7 +702,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethanfang.Investing101;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

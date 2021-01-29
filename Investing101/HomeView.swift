@@ -7,13 +7,17 @@
 
 import SwiftUI
 
+
 struct HomeView: View {
     
     @ObservedObject var videoManager = VideoManager()
     
+  
+    
     var body: some View {
         
 
+        
         NavigationView{
         ZStack(alignment: .leading) {
             GeometryReader{_ in
@@ -65,7 +69,10 @@ struct HomeView: View {
                                 if videoManager.videos.count == 0 {
                                     
                                     HStack {
-                                        Text("Loading")
+                                        
+                                        Spacer()
+                                        
+                                        LoadingView()
                                         
                                         Spacer()
                                     }
@@ -97,8 +104,12 @@ struct HomeView: View {
                                     }
                                 }
                             
+                            Divider()
+                            
                         
                             Spacer()
+                            
+                            
                         }
                     }
                     .onAppear() {
