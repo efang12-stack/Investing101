@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-
-struct Article: Identifiable {
+struct Article: Identifiable, Codable {
     
-    var id = UUID()
+    @DocumentID var id: String?
     var title: String
     var text: String
     var image: String
     var category: String
     var author: String
+    
     
 }
 

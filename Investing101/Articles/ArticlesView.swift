@@ -125,6 +125,7 @@ struct ArticlesView: View {
             .onAppear {
                 videoManager.fetchArticles(collectionName: "articles")
                 
+               
                 
             }
             .padding(.top, -60)

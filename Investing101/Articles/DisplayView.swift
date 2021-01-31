@@ -11,7 +11,8 @@ import SDWebImageSwiftUI
 struct DisplayView: View {
     
     @State var chosenArticle: Article
-   
+    @State var savedArticle: Bool = false
+    @ObservedObject var savedArticleID = SavedArticleID()
     
     var body: some View {
         
@@ -62,11 +63,47 @@ struct DisplayView: View {
                                 Spacer()
                             }
                         }
+                        
  
         
                 }
                 .padding([.top, .bottom], 15)
                 .navigationBarTitle(chosenArticle.category, displayMode: .inline)
+                .navigationBarItems(trailing: Button(action: {
+                    
+                    savedArticle.toggle()
+                    
+                    
+                    if savedArticle == true {
+
+                        guard let chosenArticleID = chosenArticle.id else {
+                            fatalError("articleID is nil")
+                        }
+                        
+                        savedArticleID.saveArticle(withID: chosenArticleID)
+                        
+                        
+                    }
+            
+                    else {
+
+                        guard let chosenArticleID = chosenArticle.id else {
+                            fatalError("articleID is nil")
+                        }
+                        
+                        savedArticleID.deleteArticle(withID: chosenArticleID)
+
+                    }
+                    
+                }, label: {
+                    if savedArticle == false {
+                    Image(systemName: "bookmark")
+                    }
+                    else {
+                        Image(systemName: "bookmark.fill")
+                    }
+                        
+                }))
                 
                
         

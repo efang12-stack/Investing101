@@ -54,7 +54,8 @@ class VideoManager: ObservableObject {
             let category = data["category"] as? String ?? ""
             let author = data["author"] as? String ?? ""
             
-            return Article(id: .init(), title: title, text: newText, image: image, category: category, author: author)
+            
+            return Article(id: queryDocumentSnapshot .documentID, title: title, text: newText, image: image, category: category, author: author)
           }
             
             
