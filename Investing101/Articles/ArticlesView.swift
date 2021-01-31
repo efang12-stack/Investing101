@@ -46,7 +46,6 @@ struct ArticlesView: View {
                     VStack{
                         
 
-                        
                         LoadingView()
                         
                         Spacer()
@@ -54,6 +53,7 @@ struct ArticlesView: View {
                     
                 }
                 else{
+                    
                     List{
                     
                         ForEach(articleSection, id: \.id) { section in

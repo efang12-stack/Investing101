@@ -11,8 +11,7 @@ import SDWebImageSwiftUI
 struct DisplayView: View {
     
     @State var chosenArticle: Article
-    @State var savedArticle: Bool = false
-    @ObservedObject var savedArticleID = SavedArticleID()
+    @ObservedObject var savedArticleManager = SavedArticleManager()
     
     var body: some View {
         
@@ -54,7 +53,7 @@ struct DisplayView: View {
                                     .font(.custom("Times New Roman", size: 21))
                                     .padding([.leading, .trailing], 20)
                                 
-                                Text("If you are interested in writing for us, send us an email at ethanfang10@gmail.com.")
+                                Text("If you are interested in writing for us, send us an email at alphafinancial@gmail.com.")
                                     .foregroundColor(.lightGray2)
                                     .font(.custom("Verdana", size: 16))
                                     .frame(width: 300)
@@ -71,16 +70,17 @@ struct DisplayView: View {
                 .navigationBarTitle(chosenArticle.category, displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
                     
-                    savedArticle.toggle()
-                    
-                    
-                    if savedArticle == true {
+                    savedArticleManager.retrieveArticleIDs()
+
+                    if !savedArticleManager.savedArticleIds.contains(chosenArticle.id!) {
 
                         guard let chosenArticleID = chosenArticle.id else {
                             fatalError("articleID is nil")
                         }
                         
-                        savedArticleID.saveArticle(withID: chosenArticleID)
+                        savedArticleManager.saveArticle(withID: chosenArticleID)
+                        
+                        savedArticleManager.retrieveArticleIDs()
                         
                         
                     }
@@ -91,19 +91,28 @@ struct DisplayView: View {
                             fatalError("articleID is nil")
                         }
                         
-                        savedArticleID.deleteArticle(withID: chosenArticleID)
+                        savedArticleManager.deleteArticle(withID: chosenArticleID)
+                        
+                        savedArticleManager.retrieveArticleIDs()
 
                     }
                     
                 }, label: {
-                    if savedArticle == false {
-                    Image(systemName: "bookmark")
+                    
+                    
+                    if savedArticleManager.savedArticleIds.contains(chosenArticle.id!) {
+                        Image(systemName: "bookmark.fill")
+
                     }
                     else {
-                        Image(systemName: "bookmark.fill")
+                        
+                        Image(systemName: "bookmark")
                     }
                         
                 }))
+                .onAppear{
+                    savedArticleManager.retrieveArticleIDs()
+                }
                 
                
         

@@ -24,8 +24,15 @@ struct VideosView: View {
                             .foregroundColor(.white)
                             .padding([.bottom, .leading], 10)
                             
+                    Spacer()
                             
-                        Spacer()
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        Image(systemName: "bookmark")
+                            .foregroundColor(.white)
+                            .font(.custom("Arial", size: 22))
+                            .padding(.trailing,10)
+                            .padding(.bottom, 5)
+                    })
                 }
                 .padding(.top, 60)
                 .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)

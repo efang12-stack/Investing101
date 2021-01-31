@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct Video: Identifiable {
+struct Video: Identifiable, Codable {
     
-    var id = UUID()
+    @DocumentID var id: String?
     var title: String
     var summary: String
     var url: String

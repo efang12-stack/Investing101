@@ -29,7 +29,7 @@ class VideoManager: ObservableObject {
             let url = data["url"] as? String ?? ""
             
             
-            return Video(id: .init(), title: title, summary: summary, url: url)
+            return Video(id: queryDocumentSnapshot .documentID, title: title, summary: summary, url: url)
           }
             
             

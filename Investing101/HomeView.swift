@@ -106,6 +106,18 @@ struct HomeView: View {
                             
                             Divider()
                             
+                            HStack{
+                                
+                                Text("Saved Courses")
+                                    .bold()
+                                    .foregroundColor(Color.darkGray)
+                                    .padding(.leading)
+                            
+                                Spacer()
+                            }
+                            .padding(.top, 10)
+                            
+                            
                         
                             Spacer()
                             
