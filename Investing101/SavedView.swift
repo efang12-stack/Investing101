@@ -14,12 +14,12 @@ struct SavedView: View {
     
     var body: some View {
         Button(action: {
-            defaults.removeObject(forKey: "savedArticleIDs")
+            defaults.removeObject(forKey: "savedCourseNames")
         }, label: {
             Text("Hello World")
         })
             .onAppear {
-                if let array = defaults.stringArray(forKey: "savedArticleIDs") {
+                if let array = defaults.stringArray(forKey: "savedCourseNames") {
                     print(array)
                 }else{
                     print("Nothing saved")

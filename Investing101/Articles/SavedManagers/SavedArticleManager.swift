@@ -11,15 +11,17 @@ import Foundation
 class SavedArticleManager: ObservableObject {
     
     @Published var savedArticleIds = [String]()
+    @Published var savedArticles = [Article]()
     let defaults = UserDefaults.standard
+    
     
     init() {
         
-        retrieveArticleIDs()
+        setArticleIDs()
         
     }
     
-    func retrieveArticleIDs() {
+    func setArticleIDs() {
         if let defaultsIDs = defaults.stringArray(forKey: "savedArticleIDs"){
             savedArticleIds = defaultsIDs
         } else {
@@ -41,4 +43,21 @@ class SavedArticleManager: ObservableObject {
         savedArticleIds.remove(at: index)
         defaults.setValue(savedArticleIds, forKey: "savedArticleIDs")
     }
+    
+    func getSavedArticles(articles: [Article]) {
+        
+        savedArticles = []
+        
+        for article in articles {
+            let id = article.id ?? ""
+            if savedArticleIds.contains(id) {
+                savedArticles.append(article)
+            }
+        }
+        
+        
+        
+    }
+    
+    
 }

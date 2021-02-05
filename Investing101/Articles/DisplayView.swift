@@ -13,6 +13,7 @@ struct DisplayView: View {
     @State var chosenArticle: Article
     @ObservedObject var savedArticleManager = SavedArticleManager()
     
+    
     var body: some View {
         
     
@@ -70,7 +71,7 @@ struct DisplayView: View {
                 .navigationBarTitle(chosenArticle.category, displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
                     
-                    savedArticleManager.retrieveArticleIDs()
+                    savedArticleManager.setArticleIDs()
 
                     if !savedArticleManager.savedArticleIds.contains(chosenArticle.id!) {
 
@@ -80,7 +81,7 @@ struct DisplayView: View {
                         
                         savedArticleManager.saveArticle(withID: chosenArticleID)
                         
-                        savedArticleManager.retrieveArticleIDs()
+                        savedArticleManager.setArticleIDs()
                         
                         
                     }
@@ -93,7 +94,7 @@ struct DisplayView: View {
                         
                         savedArticleManager.deleteArticle(withID: chosenArticleID)
                         
-                        savedArticleManager.retrieveArticleIDs()
+                        savedArticleManager.setArticleIDs()
 
                     }
                     
@@ -111,7 +112,7 @@ struct DisplayView: View {
                         
                 }))
                 .onAppear{
-                    savedArticleManager.retrieveArticleIDs()
+                    savedArticleManager.setArticleIDs()
                 }
                 
                

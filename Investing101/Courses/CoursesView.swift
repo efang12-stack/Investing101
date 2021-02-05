@@ -42,7 +42,7 @@ struct CoursesView: View {
                 
                 ZStack{
                     NavigationLink(
-                        destination: VideosView(chosenCourse: chosenCourse, show: $show),
+                        destination: VideosView(chosenCourse: chosenCourse),
                         isActive: self.$show,
                         label: {
                             Text("")
@@ -111,6 +111,8 @@ struct Course: Identifiable {
     var colorBackground1: Color
     var colorBackground2: Color
 }
+
+
 
 struct CoursesView_Previews: PreviewProvider {
     static var previews: some View {

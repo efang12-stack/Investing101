@@ -37,7 +37,7 @@ class VideoManager: ObservableObject {
        
       }
     
-    func fetchArticles(collectionName: String) {
+    func fetchArticles(collectionName: String,  completion: @escaping () -> ()) {
 
         db.collection(collectionName).getDocuments { (querySnapshot, error) in
           guard let documents = querySnapshot?.documents else {
@@ -57,10 +57,13 @@ class VideoManager: ObservableObject {
             
             return Article(id: queryDocumentSnapshot .documentID, title: title, text: newText, image: image, category: category, author: author)
           }
+                
             
-            
+            completion()
         }
-    
+        
+       
+            
     
     }
     

@@ -21,7 +21,6 @@ struct ArticlesView: View {
         Sectional(name: "Quantitative Finance", articles: [])
     ]
     
-    @State var chosenArticle : Article = Article(title: "Test", text: "test", image: "test", category: "Fin Tech", author: "Test")
     
     @State var show: Bool = false
     
@@ -45,7 +44,8 @@ struct ArticlesView: View {
                 if videoManager.articles.count == 0 {
                     VStack{
                         
-
+                        Spacer()
+                        
                         LoadingView()
                         
                         Spacer()
@@ -88,9 +88,7 @@ struct ArticlesView: View {
                                         NavigationLink(
                                             destination: DisplayView(chosenArticle: article)){
                                             
-                                        }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0).onTapGesture {
-                                            chosenArticle = article
-                                        }
+                                        }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0)
                                     }
                         
                                     
@@ -123,7 +121,7 @@ struct ArticlesView: View {
                 
             }
             .onAppear {
-                videoManager.fetchArticles(collectionName: "articles")
+                videoManager.fetchArticles(collectionName: "articles", completion: {})
                 
                
                 
@@ -137,6 +135,6 @@ struct ArticlesView: View {
 
 struct ArticlesView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticlesView(chosenArticle: Article(title: "", text: "", image: "" , category: "", author: ""))
+        ArticlesView()
     }
 }
