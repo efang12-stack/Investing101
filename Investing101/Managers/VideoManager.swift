@@ -13,12 +13,13 @@ class VideoManager: ObservableObject {
     
     @Published var videos = [Video]()
     @Published var articles = [Article]()
+    @Published var news = [News]()
     let db = Firestore.firestore()
     
     func fetchData(collectionName: String) {
         db.collection(collectionName).getDocuments { (querySnapshot, error) in
           guard let documents = querySnapshot?.documents else {
-            print("No documents")
+            print("No videos")
             return
           }
 
@@ -36,6 +37,7 @@ class VideoManager: ObservableObject {
         }
        
       }
+    
     
     func fetchArticles(collectionName: String,  completion: @escaping () -> ()) {
 
@@ -61,10 +63,30 @@ class VideoManager: ObservableObject {
             
             completion()
         }
-        
-       
             
     
+    }
+    
+    func fetchNews(collectionName: String) {
+        db.collection(collectionName).getDocuments { (querySnapshot, error) in
+          guard let documents = querySnapshot?.documents else {
+            print("No articles")
+            return
+          }
+
+          self.news = documents.map { queryDocumentSnapshot -> News in
+            let data = queryDocumentSnapshot.data()
+            let title = data["title"] as? String ?? ""
+            let url = data["url"] as? String ?? ""
+            let image = data["image"] as? String ?? ""
+            
+            return News(id: queryDocumentSnapshot .documentID, title: title, url: url, image: image)
+          }
+                
+            
+            
+        }
+        
     }
     
     

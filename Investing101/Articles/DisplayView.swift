@@ -28,14 +28,15 @@ struct DisplayView: View {
                                 Text(chosenArticle.title)
                                     .font(.custom("Arial", size: 30))
                                     .bold()
-                                    .frame(width: 345)
-                                    .padding([.leading,.trailing], 30)
+                                    .padding([.leading,.trailing], 20)
                                     .padding(.top, 10)
 
                                 WebImage(url: URL(string: chosenArticle.image))
                                     .resizable()
-                                    .frame(width: 340, height: 250)
+                                    .frame(height: 250)
                                     .cornerRadius(5)
+                                    .padding([.leading, .trailing], 20)
+                                    
 
                                 HStack {
 
@@ -43,7 +44,8 @@ struct DisplayView: View {
                                         .foregroundColor(Color.darkerGray)
                                         .font(.custom("Verdana", size: 17))
                                         .frame(width: 330, alignment: .leading)
-                                        .padding([.bottom, .leading], 35)
+                                        .padding(.bottom, 35)
+                                        .padding(.leading, 20)
                                         .padding(.top, 5)
                                         
 

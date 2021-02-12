@@ -13,12 +13,9 @@ struct ArticlesView: View {
     @ObservedObject var videoManager = VideoManager()
     
     @State var articleSection: [Sectional] = [
-        Sectional(name: "Fin Tech", articles: []),
-        Sectional(name: "Cryptocurrency", articles: []),
-        Sectional(name: "Investing Tips", articles: []),
-        Sectional(name: "Professional Development", articles: []),
         Sectional(name: "Market Opportunities", articles: []),
-        Sectional(name: "Quantitative Finance", articles: [])
+        Sectional(name: "Quantitative Finance", articles: []),
+        Sectional(name: "Personal Financial Literacy", articles: [])
     ]
     
     
@@ -68,13 +65,14 @@ struct ArticlesView: View {
                                                     
                                                     Text(article.title)
                                                         .font(.system(size: 19, weight: .bold))
-                                                        .frame(width: 200, height: 130, alignment: .leading)
+                                                        .frame(width: 200, height: 90, alignment: .leading)
                                                         
                                                         
                                                     Text("By "+(article.author))
                                                         .foregroundColor(Color.darkGray)
                                                         .font(.custom("Verdana", size: 12))
                                                         .frame(width: 200, alignment: .leading)
+                                                        .padding(.top, -5)
                                                 }
                                                 
                                                 WebImage(url: URL(string: article.image))
@@ -84,6 +82,7 @@ struct ArticlesView: View {
 
                                                 
                                         }
+                                        .frame(height: 135)
                                         
                                         NavigationLink(
                                             destination: DisplayView(chosenArticle: article)){
@@ -101,7 +100,7 @@ struct ArticlesView: View {
                     }
                     .onAppear{
                         
-                        for i in 0...5 {
+                        for i in 0...2 {
                             for article in videoManager.articles {
                                 
                                 if articleSection[i].name == article.category {
@@ -111,7 +110,7 @@ struct ArticlesView: View {
                         }
                     }
                     .onDisappear {
-                        for i in 0...5 {
+                        for i in 0...2 {
                             articleSection[i].articles = []
                         }
                     }

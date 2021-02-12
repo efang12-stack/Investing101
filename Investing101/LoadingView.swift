@@ -14,15 +14,11 @@ struct LoadingView: View {
     
     var body: some View {
         
-        Circle()
-            .trim(from: 0, to: 0.7)
-            .stroke(Color.gray, lineWidth: 2)
-            .frame(width: 25, height: 25)
-            .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
-            .animation(Animation.default.repeatForever(autoreverses: false))
-            .onAppear() {
-                self.isLoading = true
-            }
+        
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+       
+        
     }
 }
 

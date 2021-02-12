@@ -14,7 +14,7 @@ struct SavedView: View {
     
     var body: some View {
         Button(action: {
-            defaults.removeObject(forKey: "savedCourseNames")
+            defaults.removeObject(forKey: "savedArticleIDs")
         }, label: {
             Text("Hello World")
         })
