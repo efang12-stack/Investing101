@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AVKit
-import WebKit
+import SDWebImageSwiftUI
 
 struct VideosView: View {
     @State var chosenCourse: Course
@@ -15,6 +15,7 @@ struct VideosView: View {
     @ObservedObject var savedVideoManager = SavedVideoManager()
     
     var body: some View {
+        
         VStack{
                 
                 HStack {
@@ -48,6 +49,7 @@ struct VideosView: View {
                     }, label: {
                         
                         if savedVideoManager.savedCourseNames.contains(chosenCourse.courseTitle) {
+                            
                             Image(systemName: "bookmark.fill")
                                 .foregroundColor(.white)
                                 .font(.custom("Arial", size: 30))
@@ -55,6 +57,7 @@ struct VideosView: View {
                                 .padding(.bottom, 10)
                         }
                         else {
+                            
                             Image(systemName: "bookmark")
                                 .foregroundColor(.white)
                                 .font(.custom("Arial", size: 30))
@@ -64,6 +67,7 @@ struct VideosView: View {
                         
                     })
                     .onAppear{
+                        
                         savedVideoManager.setCourseNames()
                     }
                     
@@ -73,55 +77,74 @@ struct VideosView: View {
                 .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                 .background(LinearGradient(gradient: Gradient(colors: [chosenCourse.colorBackground1, chosenCourse.colorBackground2]), startPoint: .trailing, endPoint: .leading))
                 
-                
-                  
-                    
-                   
-                    
-                
+
             
-            
-            if videoManager.videos.count == 0 {
-                VStack{
+                if videoManager.videos.count == 0 {
                     
-                    LoadingView()
+                    VStack{
                     
-                    Spacer()
+                        LoadingView()
+                    
+                        Spacer()
+                    }
+                    
                 }
-            }
-            else{
-                ScrollView{
+                else{
                     
-                    VStack(spacing: 20){
+                    ScrollView(showsIndicators: false){
+                    
+                        VStack(spacing: 20){
                         
-                        ForEach(videoManager.videos, id: \.id) { video in
+                            ForEach(videoManager.videos, id: \.id) { video in
                             
-                            HStack{
-                                
-                                if let url = video.url {
-                                    
-                                        Webview(url: url)
-                                        .frame(width: 150, height: 100)
-                                        .cornerRadius(10)
+                                NavigationLink(destination: SingleVideoView(chosenVideo: video)) {
                                     
                                         
-                                }
-                                
-                                VStack{
-                                    Text(video.title)
-                                        .bold()
-                                        .frame(width: 200)
+                                            HStack{
+                                        
+                                                
+                                                WebImage(url: URL(string: video.image))
+                                                    .resizable()
+                                                    .frame(width: 170, height: 100)
+                                                    .cornerRadius(10)
+                                            
+                                                VStack{
+                                                    
+                                                    Text(video.title)
+                                                        .bold()
+                                                        .font(.custom("Verdana", size: 14))
+                                                        .multilineTextAlignment(.leading)
+                                                        .frame(width: 165)
+                                                        
+                                            
+                                                    Text(video.summary)
+                                                        .font(.custom("Verdana", size: 14))
+                                                        .multilineTextAlignment(.leading)
+                                                        .lineLimit(3)
+                                                        .foregroundColor(.darkerGray)
+                                                        .frame(width: 165)
+                                                        .multilineTextAlignment(.center)
+                                                        .padding(.bottom, 20)
+                                            
+                                                }
+                                                
+                                                                    
+                                                
+                                                Image(systemName: "chevron.right")
+                                                    .foregroundColor(Color.lightGray2)
+                                        
+                                            }
+                                            
+
+                                        
                                     
-                                    Text(video.summary)
-                                        .frame(width: 200)
-                                        .multilineTextAlignment(.center)
-                                }
-                                .padding(.leading, 5)
-                                
-                                
                             }
+                                
+                               
                         }
+                            
                     }
+                        
                     
                 }
                 .padding(.top, 10)
@@ -138,28 +161,7 @@ struct VideosView: View {
     }
 }
 
-struct Webview: UIViewRepresentable {
-    
-    
-    
-    var url: String
-    
-    func makeUIView(context: Context) -> WKWebView {
-        
-        guard let url = URL(string: self.url) else {
-            return WKWebView()
-        }
-        
-        let request = URLRequest(url: url)
-        let wkWebview = WKWebView()
-        wkWebview.load(request)
-        return wkWebview
-    }
-    
-    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<Webview>) {
-        
-    }
-}
+
 
 
 

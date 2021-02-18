@@ -27,10 +27,11 @@ class VideoManager: ObservableObject {
             let data = queryDocumentSnapshot.data()
             let title = data["title"] as? String ?? ""
             let summary = data["summary"] as? String ?? ""
+            let newSummary = summary.replacingOccurrences(of: "\\n", with: "\n")
             let url = data["url"] as? String ?? ""
+            let image = data["image"] as? String ?? ""
             
-            
-            return Video(id: queryDocumentSnapshot .documentID, title: title, summary: summary, url: url)
+            return Video(id: queryDocumentSnapshot .documentID, title: title, summary: newSummary, url: url, image: image)
           }
             
             

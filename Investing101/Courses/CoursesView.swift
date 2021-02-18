@@ -41,61 +41,63 @@ struct CoursesView: View {
                 .zIndex(1)
                 
                 ZStack{
-                    NavigationLink(
-                        destination: VideosView(chosenCourse: chosenCourse),
-                        isActive: self.$show,
-                        label: {
-                            Text("")
-                        })
                     
-                    ScrollView(.vertical){
+                        NavigationLink(
+                            destination: VideosView(chosenCourse: chosenCourse),
+                            isActive: self.$show,
+                            label: {
+                                Text("")
+                            })
                     
-                        VStack(spacing: 20){
+                        ScrollView(.vertical){
                         
-                            ForEach(courses) { course in
+                            VStack(spacing: 20){
                             
-                                HStack{
-                                    
-                                    Image(course.image)
-                                        .resizable()
-                                        .clipShape(Circle())
-                                        .frame(width: 90, height: 110)
-                                        .padding(.trailing, 20)
-                                    
-                                    VStack{
-                                        Text(course.courseTitle)
-                                            .font(.custom("Verdana", size: 15))
-                                            .bold()
-                                            .frame(maxWidth: 180, alignment: .leading)
-                                            .padding(.bottom, 1)
-                                        
-                                        Text(course.description)
-                                            .font(.custom("Verdana", size: 14))
-                                            .foregroundColor(Color.darkGray)
-                                            .frame(maxWidth: 180, alignment: .leading)
-                                    }
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .padding(.leading, 15)
-                                        .font(.headline)
+                                ForEach(courses) { course in
                                 
-                                }
-                                .onTapGesture {
-                                    self.chosenCourse = course
-                                    self.show.toggle()
-                                }
+                                    HStack{
+                                        
+                                            Image(course.image)
+                                            .resizable()
+                                            .clipShape(Circle())
+                                            .frame(width: 90, height: 110)
+                                            .padding(.trailing, 20)
+                                        
+                                            VStack{
+                                                
+                                                Text(course.courseTitle)
+                                                    .font(.custom("Verdana", size: 15))
+                                                    .bold()
+                                                    .frame(maxWidth: 180, alignment: .leading)
+                                                    .padding(.bottom, 1)
+                                            
+                                                Text(course.description)
+                                                    .font(.custom("Verdana", size: 14))
+                                                    .foregroundColor(Color.darkGray)
+                                                    .frame(maxWidth: 180, alignment: .leading)
+                                            }
+                                        
+                                            Image(systemName: "chevron.right")
+                                                .padding(.leading, 15)
+                                                .font(.headline)
+                                    
+                                    }
+                                    .onTapGesture {
+                                        self.chosenCourse = course
+                                        self.show.toggle()
+                                    }
+                            }
                         }
+                    
+                        Spacer()
                     }
-                
-                    Spacer()
                 }
             }
-        }
             .padding(.top, -60)
             .background(Color.lightGray)
             .edgesIgnoringSafeArea(.bottom)
+            
         }
-        
         
         
     }

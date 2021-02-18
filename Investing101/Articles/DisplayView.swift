@@ -56,7 +56,7 @@ struct DisplayView: View {
                                     .font(.custom("Times New Roman", size: 21))
                                     .padding([.leading, .trailing], 20)
                                 
-                                Text("If you are interested in writing for us, send us an email at alphafinancial@gmail.com.")
+                                Text("If you are interested in writing for us, send us an email at contactus.alphafinance@gmail.com.")
                                     .foregroundColor(.lightGray2)
                                     .font(.custom("Verdana", size: 16))
                                     .frame(width: 300)

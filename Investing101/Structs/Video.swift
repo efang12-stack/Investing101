@@ -14,7 +14,7 @@ struct Video: Identifiable, Codable {
     var title: String
     var summary: String
     var url: String
-    
+    var image: String
     
     
 }

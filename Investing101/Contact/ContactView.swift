@@ -55,7 +55,7 @@ struct ContactView: View {
                             MailView(result: self.$result)
                         }
                         .alert(isPresented: self.$alertNoMail) {
-                                Alert(title: Text("NO MAIL SETUP"))
+                            Alert(title: Text("Mail App Not Setup"), dismissButton: .cancel())
                         }
                 
                 Divider()
@@ -198,7 +198,7 @@ struct MailView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
         vc.mailComposeDelegate = context.coordinator
-        vc.setToRecipients(["ethan.fang.912@k12.friscoisd.org"])
+        vc.setToRecipients(["contactus.alphafinance@gmail.com"])
         return vc
     }
 
