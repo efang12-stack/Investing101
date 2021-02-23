@@ -23,12 +23,32 @@ struct SingleVideoView: View {
                         Webview(url: url)
                             .frame(width: UIScreen.main.bounds.width, height: 300)
                     }
+                    
+                    
+                    ScrollView{
 
-                
-                    Text(chosenVideo.summary)
-                        .multilineTextAlignment(.leading)
-                
-                    Spacer()
+                            VStack{
+                            
+                                    HStack{
+                                        
+                                        Text(chosenVideo.title)
+                                            .font(.custom("Verdana", size: 20))
+                                            .bold()
+                                            .multilineTextAlignment(.leading)
+                                            .padding(.leading, 17)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(.bottom, 1)
+                                
+                                    Text(chosenVideo.summary)
+                                        .font(.custom("San Francisco", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                
+                                    Spacer()
+                            }
+                    }
+                    
                 }
                 
                 

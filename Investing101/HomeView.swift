@@ -24,7 +24,7 @@ struct HomeView: View {
     
     var body: some View {
         
-
+        
         
         NavigationView{
             
@@ -34,23 +34,23 @@ struct HomeView: View {
                 
                 
                 GeometryReader{_ in
-                
+                    
                     VStack{
                         
                         ZStack{
                             
                             HStack{
                                 
-                                    Text("It's A Great Day To Invest")
-                                        .font(.custom("Verdana", size: 25))
-                                        .bold()
-                                        .frame(width: 250)
-                                        .padding(.bottom, 10)
-                                    
+                                Text("It's A Great Day To Invest")
+                                    .font(.custom("Verdana", size: 25))
+                                    .bold()
+                                    .frame(width: 250)
+                                    .padding(.bottom, 10)
+                                
                                 
                                 Spacer()
                             }
-                                
+                            
                         }
                         .padding()
                         .foregroundColor(.primary)
@@ -62,107 +62,107 @@ struct HomeView: View {
                             
                             VStack {
                                 
-                                    HStack{
-                                
-                                            Text("Last Month's News")
-                                                    .bold()
-                                                    .foregroundColor(Color.darkGray)
-                                                    .padding(.leading)
-                            
-                                            Spacer()
+                                HStack{
                                     
-                                    }
-                                    .padding(.top, 10)
-                                
-                                    if videoManager.news.count == 0 {
+                                    Text("Last Month's News")
+                                        .bold()
+                                        .foregroundColor(Color.darkGray)
+                                        .padding(.leading)
                                     
-                                        LoadingView()
-                                    }
-                                    else{
-                                
-                                        ScrollView(.horizontal) {
-                                            
-                                                    HStack{
-                                                        
-                                                    
-                                                    
-                                                        ForEach(videoManager.news) { newspaper in
-                                                            
-                                                            
-                                                            NavigationLink(destination: NewsDisplay(url: newspaper.url)) {
-                                                                
-                                                                HStack{
-                                                                        Text(newspaper.title)
-                                                                            .font(.system(size: 23, weight: .bold))
-                                                                            .frame(width: 230, height: 200, alignment: .leading)
-                                                                            .padding(.leading, 15)
-                                                                    
-                                                                        WebImage(url: URL(string: newspaper.image))
-                                                                            .resizable()
-                                                                            .frame(width: 140, height: 140)
-                                                                            .cornerRadius(10)
-                                                                            .padding(.trailing, 15)
-                                                                }
-                                                                
-                                                            }
-                                                            
-  
-                                                        }
-                                                                  
-                                                        
-                                                            
-                                                    }
-                                            
-                                        
-                                            
-                                        }
-                                        
-                                    }
-                            
-                                    HStack{
+                                    Spacer()
                                     
-                                            Text("Video Of The Week")
-                                                    .bold()
-                                                    .foregroundColor(Color.darkGray)
-                                                    .padding(.leading)
+                                }
+                                .padding(.top, 10)
                                 
-                                            Spacer()
-                                        
-                                    }
-                                    .padding(.top, 10)
-                                
-                                
-                                    if videoManager.videos.count == 0 {
-                                        
-                                        LoadingView()
-                                    }
-                                    else {
+                                if videoManager.news.count == 0 {
+                                    
+                                    LoadingView()
+                                }
+                                else{
+                                    
+                                    ScrollView(.horizontal) {
                                         
                                         HStack{
-                                            if let url = videoManager.videos[0].url {
+                                            
+                                            
+                                            
+                                            ForEach(videoManager.news) { newspaper in
                                                 
                                                 
-                                                Webview(url: url)
-                                                    .frame(width: 150, height: 100)
-                                                    .cornerRadius(10)
-                                                
+                                                NavigationLink(destination: NewsDisplay(url: newspaper.url)) {
                                                     
+                                                    HStack{
+                                                        Text(newspaper.title)
+                                                            .font(.system(size: 23, weight: .bold))
+                                                            .frame(width: 230, height: 200, alignment: .leading)
+                                                            .padding(.leading, 15)
+                                                        
+                                                        WebImage(url: URL(string: newspaper.image))
+                                                            .resizable()
+                                                            .frame(width: 140, height: 140)
+                                                            .cornerRadius(10)
+                                                            .padding(.trailing, 15)
+                                                    }
+                                                    
+                                                }
+                                                
+                                                
                                             }
                                             
-                                            VStack{
-                                                Text(videoManager.videos[0].title)
-                                                    .bold()
-                                                    .frame(width: 200)
-                                                
-                                                Text(videoManager.videos[0].summary)
-                                                    .frame(width: 200)
-                                                    .multilineTextAlignment(.center)
-                                            }
-                                            .padding(.leading, 5)
                                             
                                             
                                         }
+                                        
+                                        
+                                        
                                     }
+                                    
+                                }
+                                
+                                HStack{
+                                    
+                                    Text("Video Of The Week")
+                                        .bold()
+                                        .foregroundColor(Color.darkGray)
+                                        .padding(.leading)
+                                    
+                                    Spacer()
+                                    
+                                }
+                                .padding(.top, 10)
+                                
+                                
+                                if videoManager.videos.count == 0 {
+                                    
+                                    LoadingView()
+                                }
+                                else {
+                                    
+                                    HStack{
+                                        if let url = videoManager.videos[0].url {
+                                            
+                                            
+                                            Webview(url: url)
+                                                .frame(width: 150, height: 100)
+                                                .cornerRadius(10)
+                                            
+                                            
+                                        }
+                                        
+                                        VStack{
+                                            Text(videoManager.videos[0].title)
+                                                .bold()
+                                                .frame(width: 200)
+                                            
+                                            Text(videoManager.videos[0].summary)
+                                                .frame(width: 200)
+                                                .multilineTextAlignment(.center)
+                                        }
+                                        .padding(.leading, 5)
+                                        
+                                        
+                                    }
+                                }
                                 
                                 Divider()
                                 
@@ -172,19 +172,19 @@ struct HomeView: View {
                                         .bold()
                                         .foregroundColor(Color.darkGray)
                                         .padding(.leading)
-                                
+                                    
                                     Spacer()
                                 }
                                 .padding([.top, .bottom], 10)
                                 
-                            
+                                
                                 
                                 if savedArticleManager.savedArticles.count == 0 {
                                     
                                     VStack {
                                         
                                         if savedArticleManager.savedArticleIds.count == 0 {
-                                        
+                                            
                                             Text("No Saved Articles")
                                                 .foregroundColor(Color.lightGray2)
                                                 .font(.custom("Arial", size: 17))
@@ -201,57 +201,57 @@ struct HomeView: View {
                                 else {
                                     
                                     ZStack {
-                                    
+                                        
                                         NavigationLink(
                                             destination: DisplayView(chosenArticle: chosenArticle),
                                             isActive: self.$showDisplayView,
                                             label: {
                                                 Text("")
                                             })
-                                    
-                                        VStack{
                                         
-                                            ForEach(savedArticleManager.savedArticles) { article in
+                                        VStack{
                                             
-                                                    VStack {
-
-                                                        HStack(spacing: 50){
-
-                                                                VStack {
-
-                                                                    Text(article.title)
-                                                                        .font(.system(size: 19, weight: .bold))
-                                                                        .frame(width: 200, height: 90, alignment: .leading)
-
-
-                                                                    Text("By "+(article.author))
-                                                                        .foregroundColor(Color.darkGray)
-                                                                        .font(.custom("Verdana", size: 12))
-                                                                        .frame(width: 200, alignment: .leading)
-                                                                        .padding(.top, -5)
-                                                                }
-
-                                                                WebImage(url: URL(string: article.image))
-                                                                    .resizable()
-                                                                    .frame(width: 100, height: 100)
-                                                                    .cornerRadius(10)
-
-
+                                            ForEach(savedArticleManager.savedArticles) { article in
+                                                
+                                                VStack {
+                                                    
+                                                    HStack(spacing: 50){
+                                                        
+                                                        VStack {
+                                                            
+                                                            Text(article.title)
+                                                                .font(.system(size: 19, weight: .bold))
+                                                                .frame(width: 200, height: 90, alignment: .leading)
+                                                            
+                                                            
+                                                            Text("By "+(article.author))
+                                                                .foregroundColor(Color.darkGray)
+                                                                .font(.custom("Verdana", size: 12))
+                                                                .frame(width: 200, alignment: .leading)
+                                                                .padding(.top, -5)
                                                         }
-                                                        .frame(height: 135)
-
-
-                                                        Divider()
+                                                        
+                                                        WebImage(url: URL(string: article.image))
+                                                            .resizable()
+                                                            .frame(width: 100, height: 100)
+                                                            .cornerRadius(10)
+                                                        
                                                         
                                                     }
-                                                    .onTapGesture {
-                                                        chosenArticle = article
-                                                        self.showDisplayView.toggle()
-                                                    }
-        
-                                            
+                                                    .frame(height: 135)
+                                                    
+                                                    
+                                                    Divider()
+                                                    
+                                                }
+                                                .onTapGesture {
+                                                    chosenArticle = article
+                                                    self.showDisplayView.toggle()
+                                                }
+                                                
+                                                
                                             }
-                                        
+                                            
                                         }
                                     }
                                     
@@ -264,7 +264,7 @@ struct HomeView: View {
                                         .bold()
                                         .foregroundColor(Color.darkGray)
                                         .padding(.leading)
-                                
+                                    
                                     Spacer()
                                 }
                                 .padding([.top, .bottom], 10)
@@ -274,7 +274,7 @@ struct HomeView: View {
                                     VStack {
                                         
                                         if savedVideoManager.savedCourseNames.count == 0 {
-                                        
+                                            
                                             Text("No Saved Courses")
                                                 .foregroundColor(Color.lightGray2)
                                                 .font(.custom("Arial", size: 17))
@@ -331,7 +331,7 @@ struct HomeView: View {
                                                         Image(systemName: "chevron.right")
                                                             .padding(.leading, 15)
                                                             .font(.headline)
-                                                    
+                                                        
                                                     }
                                                     
                                                     Divider()
@@ -349,7 +349,7 @@ struct HomeView: View {
                                     }
                                     
                                 }
-        
+                                
                                 
                                 
                             }
@@ -362,9 +362,9 @@ struct HomeView: View {
                                 if path.status == .satisfied {
                                     print("We're connected!")
                                 } else {
-                                   notConnected = true
+                                    notConnected = true
                                 }
-
+                                
                                 
                             }
                             
@@ -377,13 +377,13 @@ struct HomeView: View {
                             self.videoManager.fetchNews(collectionName: "news")
                             
                             self.videoManager.fetchArticles(collectionName: "articles",
-                                    completion:
-                                        {
-                    
-                                            savedArticleManager.getSavedArticles(articles: videoManager.articles)
-                                        
-                                        
-                                    })
+                                                            completion:
+                                                                {
+                                                                    
+                                                                    savedArticleManager.getSavedArticles(articles: videoManager.articles)
+                                                                    
+                                                                    
+                                                                })
                             
                             self.savedVideoManager.getSavedCourses()
                             
@@ -397,10 +397,10 @@ struct HomeView: View {
                         
                     }
                 }
-            
-            
-            
-            
+                
+                
+                
+                
             }
             
             
