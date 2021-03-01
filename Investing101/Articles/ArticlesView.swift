@@ -18,25 +18,20 @@ struct ArticlesView: View {
         Sectional(name: "Personal Financial Literacy", articles: [])
     ]
     
-    
-    @State var show: Bool = false
-    
     var body: some View {
         
         NavigationView{
             
             VStack {
                 
-                HStack{
+                Header(padding: 30) {
                     
-                    Text("Articles")
+                    Text("Courses")
                         .font(.system(size: 35, weight: .bold))
                         .padding([.leading, .bottom], 15)
-                
-            
+                    
                     Spacer()
                 }
-                .overlay(Rectangle().stroke(Color.primary.opacity(0.3), lineWidth: 2).shadow(radius: 6).edgesIgnoringSafeArea(.top))
                 
                 if videoManager.articles.count == 0 {
                     VStack{
@@ -47,7 +42,6 @@ struct ArticlesView: View {
                         
                         Spacer()
                     }
-                    
                 }
                 else{
                     
@@ -57,50 +51,16 @@ struct ArticlesView: View {
                             Section(header: Text(section.name).bold()) {
                                 ForEach(section.articles) { article in
                                         
-                                    ZStack {
-                                        
-                                        HStack(spacing: 50){
-                                                
-                                                VStack {
-                                                    
-                                                    Text(article.title)
-                                                        .font(.system(size: 19, weight: .bold))
-                                                        .frame(width: 200, height: 90, alignment: .leading)
-                                                        
-                                                        
-                                                    Text("By "+(article.author))
-                                                        .foregroundColor(Color.darkGray)
-                                                        .font(.custom("Verdana", size: 12))
-                                                        .frame(width: 200, alignment: .leading)
-                                                        .padding(.top, -5)
-                                                }
-                                                
-                                                WebImage(url: URL(string: article.image))
-                                                    .resizable()
-                                                    .frame(width: 100, height: 100)
-                                                    .cornerRadius(10)
-
-                                                
-                                        }
-                                        .frame(height: 135)
-                                        
-                                        NavigationLink(
-                                            destination: DisplayView(chosenArticle: article)){
-                                            
-                                        }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0)
+                                    NavigationLink(destination: DisplayView(chosenArticle: article)) {
+                                        HorizontalArticleView(article: article)
                                     }
-                        
-                                    
-                                
                                 }
                             }
                         }
-                        
-                        
                     }
                     .onAppear{
                         
-                        for i in 0...2 {
+                        for i in 0...(articleSection.count-1) {
                             for article in videoManager.articles {
                                 
                                 if articleSection[i].name == article.category {
@@ -110,23 +70,18 @@ struct ArticlesView: View {
                         }
                     }
                     .onDisappear {
-                        for i in 0...2 {
+                        for i in 0...(articleSection.count-1) {
                             articleSection[i].articles = []
                         }
                     }
                     .listStyle(GroupedListStyle())
-                
                 }
-                
             }
+            .navigationTitle("")
+            .navigationBarHidden(true)
             .onAppear {
-                videoManager.fetchArticles(collectionName: "articles", completion: {})
-                
-               
-                
+                videoManager.fetchArticles({})
             }
-            .padding(.top, -60)
-        
         }
     }
 }

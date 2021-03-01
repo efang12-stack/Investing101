@@ -14,11 +14,8 @@ class SavedArticleManager: ObservableObject {
     @Published var savedArticles = [Article]()
     let defaults = UserDefaults.standard
     
-    
     init() {
-        
         setArticleIDs()
-        
     }
     
     func setArticleIDs() {
@@ -30,7 +27,6 @@ class SavedArticleManager: ObservableObject {
     }
     
     func saveArticle(withID ID: String) {
-        
         savedArticleIds.append(ID)
         defaults.setValue(savedArticleIds, forKey: "savedArticleIDs")
     }
@@ -38,7 +34,6 @@ class SavedArticleManager: ObservableObject {
     
     
     func deleteArticle(withID ID: String) {
-        
         guard let index = savedArticleIds.firstIndex(of: ID) else { fatalError("No index found") }
         savedArticleIds.remove(at: index)
         defaults.setValue(savedArticleIds, forKey: "savedArticleIDs")
@@ -54,10 +49,5 @@ class SavedArticleManager: ObservableObject {
                 savedArticles.append(article)
             }
         }
-        
-        
-        
     }
-    
-    
 }

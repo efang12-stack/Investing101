@@ -23,9 +23,7 @@ class SavedVideoManager: ObservableObject {
     
     
     init() {
-        
         setCourseNames()
-        
     }
     
     func setCourseNames() {
@@ -37,13 +35,11 @@ class SavedVideoManager: ObservableObject {
     }
     
     func saveCourse(withCourse course: String) {
-        
         savedCourseNames.append(course)
         defaults.setValue(savedCourseNames, forKey: "savedCourseNames")
     }
     
     func deleteCourse(withCourse course: String) {
-        
         guard let index = savedCourseNames.firstIndex(of: course) else { fatalError("No index found") }
         savedCourseNames.remove(at: index)
         defaults.setValue(savedCourseNames, forKey: "savedCourseNames")

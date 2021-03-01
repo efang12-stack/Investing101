@@ -11,8 +11,9 @@ import SDWebImageSwiftUI
 
 struct VideosView: View {
     @State var chosenCourse: Course
-    @ObservedObject var videoManager = VideoManager()
-    @ObservedObject var savedVideoManager = SavedVideoManager()
+    
+    @EnvironmentObject var videoManager: VideoManager
+    @EnvironmentObject var savedVideoManager : SavedVideoManager
     
     var body: some View {
         
@@ -36,14 +37,12 @@ struct VideosView: View {
                             savedVideoManager.saveCourse(withCourse: chosenCourse.courseTitle)
                         
                             savedVideoManager.setCourseNames()
-                        
                         }
                         else {
                             
                             savedVideoManager.deleteCourse(withCourse: chosenCourse.courseTitle)
                             
                             savedVideoManager.setCourseNames()
-                            
                         }
                         
                     }, label: {
@@ -70,15 +69,11 @@ struct VideosView: View {
                         
                         savedVideoManager.setCourseNames()
                     }
-                    
-                    
                 }
                 .padding(.top, 90)
                 .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                 .background(LinearGradient(gradient: Gradient(colors: [chosenCourse.colorBackground1, chosenCourse.colorBackground2]), startPoint: .trailing, endPoint: .leading))
                 
-
-            
                 if videoManager.videos.count == 0 {
                     
                     VStack{
@@ -87,7 +82,6 @@ struct VideosView: View {
                     
                         Spacer()
                     }
-                    
                 }
                 else{
                     
@@ -97,67 +91,21 @@ struct VideosView: View {
                         
                             ForEach(videoManager.videos, id: \.id) { video in
                             
-                                NavigationLink(destination: SingleVideoView(chosenVideo: video)) {
+                                NavigationLink(destination: SingleVideoView(video: video)) {
                                     
-                                        
-                                            HStack{
-                                        
-                                                
-                                                WebImage(url: URL(string: video.image))
-                                                    .resizable()
-                                                    .frame(width: 170, height: 100)
-                                                    .cornerRadius(10)
-                                            
-                                                VStack{
-                                                    
-                                                    Text(video.title)
-                                                        .bold()
-                                                        .font(.custom("Verdana", size: 14))
-                                                        .multilineTextAlignment(.leading)
-                                                        .frame(width: 165)
-                                                        
-                                            
-                                                    Text(video.summary)
-                                                        .font(.custom("Verdana", size: 14))
-                                                        .multilineTextAlignment(.leading)
-                                                        .lineLimit(3)
-                                                        .foregroundColor(.darkerGray)
-                                                        .frame(width: 165)
-                                                        .multilineTextAlignment(.center)
-                                                        .padding(.bottom, 20)
-                                            
-                                                }
-                                                
-                                                                    
-                                                
-                                                Image(systemName: "chevron.right")
-                                                    .foregroundColor(Color.lightGray2)
-                                        
-                                            }
-                                            
-
-                                        
-                                    
+                                    HorizontalVideosView(video: video)
+                                }
                             }
-                                
-                               
                         }
-                            
                     }
-                        
-                    
-                }
-                .padding(.top, 10)
-               
+                    .padding(.top, 10)
             }
-            
         }
-        .ignoresSafeArea( edges: .top)
-        .onAppear() {
-            self.videoManager.fetchData(collectionName: chosenCourse.dataKey)
+        .ignoresSafeArea(edges: .top)
+        .onAppear{
+            self.videoManager.fetchVideos(collectionName: chosenCourse.dataKey)
            
         }
-        
     }
 }
 
@@ -167,6 +115,6 @@ struct VideosView: View {
 
 struct VideosView_Previews: PreviewProvider {
     static var previews: some View {
-        VideosView(chosenCourse: Course(courseTitle: "", image: "", description: "", dataKey: "", colorBackground1: Color.blue, colorBackground2: Color.red))
+        VideosView(chosenCourse: Course())
     }
 }

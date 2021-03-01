@@ -12,11 +12,12 @@ import Firebase
 class VideoManager: ObservableObject {
     
     @Published var videos = [Video]()
+    @Published var specialVideo = [Video]()
     @Published var articles = [Article]()
     @Published var news = [News]()
     let db = Firestore.firestore()
-    
-    func fetchData(collectionName: String) {
+        
+    func fetchVideos(collectionName: String) {
         db.collection(collectionName).getDocuments { (querySnapshot, error) in
           guard let documents = querySnapshot?.documents else {
             print("No videos")
@@ -27,22 +28,37 @@ class VideoManager: ObservableObject {
             let data = queryDocumentSnapshot.data()
             let title = data["title"] as? String ?? ""
             let summary = data["summary"] as? String ?? ""
-            let newSummary = summary.replacingOccurrences(of: "\\n", with: "\n")
             let url = data["url"] as? String ?? ""
             let image = data["image"] as? String ?? ""
+            let objectives = data["objectives"] as? String ?? ""
+            let newObjectives = objectives.replacingOccurrences(of: "\\n", with: "\n")
             
-            return Video(id: queryDocumentSnapshot .documentID, title: title, summary: newSummary, url: url, image: image)
+            return Video(id: queryDocumentSnapshot .documentID, title: title, summary: summary, url: url, image: image, objectives: newObjectives)
           }
-            
-            
         }
-       
-      }
+    }
     
-    
-    func fetchArticles(collectionName: String,  completion: @escaping () -> ()) {
+    func fetchSpecial() {
+        db.collection("special").getDocuments { (querySnapshot, error) in
+          guard let documents = querySnapshot?.documents else {
+            print("No videos")
+            return
+          }
 
-        db.collection(collectionName).getDocuments { (querySnapshot, error) in
+          self.specialVideo = documents.map { queryDocumentSnapshot -> Video in
+            let data = queryDocumentSnapshot.data()
+            let title = data["title"] as? String ?? ""
+            let summary = data["summary"] as? String ?? ""
+            let url = data["url"] as? String ?? ""
+            
+            return Video(id: queryDocumentSnapshot .documentID, title: title, summary: summary, url: url)
+          }
+        }
+    }
+    
+    
+    func fetchArticles(_ completion: @escaping () -> ()) {
+        db.collection("articles").getDocuments { (querySnapshot, error) in
           guard let documents = querySnapshot?.documents else {
             print("No articles")
             return
@@ -60,16 +76,12 @@ class VideoManager: ObservableObject {
             
             return Article(id: queryDocumentSnapshot .documentID, title: title, text: newText, image: image, category: category, author: author)
           }
-                
-            
             completion()
         }
-            
-    
     }
     
-    func fetchNews(collectionName: String) {
-        db.collection(collectionName).getDocuments { (querySnapshot, error) in
+    func fetchNews() {
+        db.collection("news").getDocuments { (querySnapshot, error) in
           guard let documents = querySnapshot?.documents else {
             print("No articles")
             return
@@ -83,11 +95,7 @@ class VideoManager: ObservableObject {
             
             return News(id: queryDocumentSnapshot .documentID, title: title, url: url, image: image)
           }
-                
-            
-            
         }
-        
     }
     
     

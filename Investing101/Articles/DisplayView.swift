@@ -11,8 +11,7 @@ import SDWebImageSwiftUI
 struct DisplayView: View {
     
     @State var chosenArticle: Article
-    @ObservedObject var savedArticleManager = SavedArticleManager()
-    
+    @EnvironmentObject var savedArticleManager: SavedArticleManager
     
     var body: some View {
         
@@ -28,14 +27,14 @@ struct DisplayView: View {
                                 Text(chosenArticle.title)
                                     .font(.custom("Arial", size: 30))
                                     .bold()
-                                    .padding([.leading,.trailing], 20)
+                                    .padding(.horizontal, 20)
                                     .padding(.top, 10)
 
                                 WebImage(url: URL(string: chosenArticle.image))
                                     .resizable()
                                     .frame(height: 250)
                                     .cornerRadius(5)
-                                    .padding([.leading, .trailing], 20)
+                                    .padding(.horizontal, 20)
                                     
 
                                 HStack {
@@ -54,7 +53,7 @@ struct DisplayView: View {
 
                                 Text(chosenArticle.text)
                                     .font(.custom("Times New Roman", size: 21))
-                                    .padding([.leading, .trailing], 20)
+                                    .padding(.horizontal, 20)
                                 
                                 Text("If you are interested in writing for us, send us an email at contactus.alphafinance@gmail.com.")
                                     .foregroundColor(.lightGray2)
@@ -69,7 +68,6 @@ struct DisplayView: View {
  
         
                 }
-                .padding([.top, .bottom], 15)
                 .navigationBarTitle(chosenArticle.category, displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
                     

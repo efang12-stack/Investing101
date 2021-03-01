@@ -11,10 +11,9 @@ import FirebaseFirestoreSwift
 struct Video: Identifiable, Codable {
     
     @DocumentID var id: String?
-    var title: String
-    var summary: String
-    var url: String
-    var image: String
-    
-    
+    var title: String = ""
+    var summary: String = ""
+    var url: String = ""
+    var image: String = ""
+    var objectives: String = ""
 }

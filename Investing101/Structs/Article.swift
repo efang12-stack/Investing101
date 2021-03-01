@@ -11,13 +11,11 @@ import FirebaseFirestoreSwift
 struct Article: Identifiable, Codable {
     
     @DocumentID var id: String?
-    var title: String
-    var text: String
-    var image: String
-    var category: String
-    var author: String
-    
-    
+    var title: String = ""
+    var text: String = ""
+    var image: String = ""
+    var category: String = ""
+    var author: String = ""
 }
 
 struct Sectional: Identifiable {

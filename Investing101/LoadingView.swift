@@ -13,12 +13,8 @@ struct LoadingView: View {
     @State private var isLoading = false
     
     var body: some View {
-        
-        
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
-       
-        
     }
 }
 
