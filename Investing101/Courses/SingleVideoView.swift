@@ -24,7 +24,12 @@ struct SingleVideoView: View {
                     
                 ScrollView{
 
-                    Summary(description: video.summary, title: "Summary:")
+                    VStack {
+                        Summary(description: video.summary, title: "Summary:")
+                            .padding(.bottom, 10)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.lightGray)
                     
                     Summary(description: video.objectives, title: "Objectives:")
                 }

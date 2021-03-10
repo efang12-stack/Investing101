@@ -101,7 +101,7 @@ struct HomeView: View {
                                 LazyVStack{
                                     
                                     NavigationLink(
-                                        destination: SingleVideoView(video: video),
+                                        destination: SingleSpecialView(video: video),
                                         label: {
                                             
                                             HStack{

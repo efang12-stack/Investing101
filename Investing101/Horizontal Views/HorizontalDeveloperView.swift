@@ -31,13 +31,11 @@ struct HorizontalDeveloperView: View {
                     Text(name)
                         .bold()
                         .font(.custom("Arial", size: 18))
-                        .foregroundColor(Color.black)
                         .frame(width: 270)
                         .padding(.bottom, 3)
                     
                     Text(description)
                         .font(.custom("Arial", size: 15))
-                        .foregroundColor(Color.black)
                         .multilineTextAlignment(.leading)
                         .frame(width: 230)
                 }
@@ -48,7 +46,6 @@ struct HorizontalDeveloperView: View {
             
             Text("Email: \(email)")
                 .font(.custom("Verdana", size: 15))
-                .foregroundColor(Color.black)
                 .frame(width: 270)
             
             Link(destination: URL(string: link)!, label: {

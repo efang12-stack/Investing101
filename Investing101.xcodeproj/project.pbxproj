@@ -41,6 +41,7 @@
 		AAB2EDE725F6B1B90084E775 /* HorizontalDeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2EDE625F6B1B90084E775 /* HorizontalDeveloperView.swift */; };
 		AABE853D25AFE07E00ECE51E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE853C25AFE07E00ECE51E /* Color.swift */; };
 		AACD842E25BB8719006F807F /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD842D25BB8719006F807F /* DisplayView.swift */; };
+		AAD8EFD425F938DF001197A2 /* SingleSpecialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8EFD325F938DF001197A2 /* SingleSpecialView.swift */; };
 		AAED714C25EC6E390019A2C7 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAED714B25EC6E390019A2C7 /* Summary.swift */; };
 		CBFAB86AADA5F014FA307DD5 /* Pods_Investing101.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DBD20C37AE3BE69CCA6D3F /* Pods_Investing101.framework */; };
 /* End PBXBuildFile section */
@@ -108,6 +109,7 @@
 		AAB2EDE625F6B1B90084E775 /* HorizontalDeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDeveloperView.swift; sourceTree = "<group>"; };
 		AABE853C25AFE07E00ECE51E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		AACD842D25BB8719006F807F /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		AAD8EFD325F938DF001197A2 /* SingleSpecialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSpecialView.swift; sourceTree = "<group>"; };
 		AAED714B25EC6E390019A2C7 /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		B509C591C76FA0A83E00E39D /* Pods-Investing101-Investing101UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Investing101-Investing101UITests.debug.xcconfig"; path = "Target Support Files/Pods-Investing101-Investing101UITests/Pods-Investing101-Investing101UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9DBD20C37AE3BE69CCA6D3F /* Pods_Investing101.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Investing101.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +250,7 @@
 				AA65126425B133DD00D84D49 /* HomeView.swift */,
 				AA9F4A8525E743E300602D24 /* WebView.swift */,
 				AA58D9E425C10AE500383AFD /* LoadingView.swift */,
+				AAD8EFD325F938DF001197A2 /* SingleSpecialView.swift */,
 				AA430EB625C7707900F01EE9 /* SavedManagers */,
 				AA9F4A6F25E6DABB00602D24 /* Horizontal Views */,
 				AA87790125B354800002AE29 /* Courses */,
@@ -568,6 +571,7 @@
 				AA65126F25B134A700D84D49 /* ContactView.swift in Sources */,
 				AAB2EDE225F6AC610084E775 /* SavedView.swift in Sources */,
 				AA430E6A25C6094900F01EE9 /* SavedArticleManager.swift in Sources */,
+				AAD8EFD425F938DF001197A2 /* SingleSpecialView.swift in Sources */,
 				AA8778EE25B28CCA0002AE29 /* VideoManager.swift in Sources */,
 				AA282EB525B228A200B9B97B /* AppDelegate.swift in Sources */,
 				AA58D9E525C10AE500383AFD /* LoadingView.swift in Sources */,

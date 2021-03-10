@@ -17,9 +17,10 @@ struct HorizontalCourseView: View {
             
             Image(course.image)
                 .resizable()
-                .clipShape(Circle())
-                .frame(width: 90, height: 110)
+                .frame(width: 100, height: 100)
+                .cornerRadius(10)
                 .padding(.trailing, 20)
+            
             
             VStack{
                 Text(course.courseTitle)

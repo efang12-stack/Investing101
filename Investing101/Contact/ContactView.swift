@@ -22,15 +22,42 @@ struct ContactView: View {
                 
                 Image("logo")
                     .resizable()
-                    .frame(width: 220, height: 220)
+                    .frame(width: 200, height: 200)
                     .padding(.top, -3)
+                
+                VStack{
+                    Text("Who Are We")
+                        .font(.custom("Verdana", size: 17))
+                        .bold()
+                        .padding(.bottom, 2)
+                    
+                    Text("We are a nonprofit organization designed to teach kids about courses such as investment and financial literacy to inspire them to pursue these topics for the future.")
+                        .font(.custom("Arial", size: 15))
+                        .multilineTextAlignment(.center)
+                        .frame(width: UIScreen.main.bounds.width / 1.3)
+                }
+                .padding(.bottom, 10)
+                
+                VStack {
+                    
+                    Text("Meet The Developers")
+                        .font(.custom("Verdana", size: 17))
+                        .bold()
+                        .padding(.bottom, 20)
+                    
+                    HorizontalDeveloperView(image: "ethan", name: "Ethan Fang", description: "I am a app developer who has coded multiple projects in Swift. I am interested in finance and computer science.", email: "ethanfang10@gmail.com", link: "https://www.linkedin.com/in/ethan-fang-bb0404161/")
+                        .padding(.bottom, 20)
+                      
+                    HorizontalDeveloperView(image: "aayush", name: "Aayush Kadakia", description: "I am the founder of Alpha Business Club and I am interested in the world of finance and business.", email: "kadakiaaayush@gmail.com", link: "https://www.linkedin.com/in/aayush-kadakia-7939531ba/")
+                        .padding(.bottom, 20)
+                }
+                .padding(.top, 20)
                 
                 Button(action: {
                     
                     MFMailComposeViewController.canSendMail() ? self.isShowingMailView.toggle() : self.alertNoMail.toggle()
                         }) {
                             Text("Email Us!")
-                                .foregroundColor(.black)
                                 .font(.custom("Verdana", size:16))
 
                         }
@@ -48,22 +75,6 @@ struct ContactView: View {
                         .alert(isPresented: self.$alertNoMail) {
                             Alert(title: Text("Mail App Not Setup"), dismissButton: .cancel())
                         }
-                
-                VStack {
-                    
-                    Text("Meet The Developers")
-                        .font(.custom("Verdana", size: 17))
-                        .foregroundColor(Color.black)
-                        .bold()
-                        .padding(.bottom, 20)
-                    
-                    HorizontalDeveloperView(image: "ethan", name: "Ethan Fang", description: "I am a app developer who has coded multiple projects in Swift. I am interested in finance and computer science.", email: "ethanfang10@gmail.com", link: "https://www.linkedin.com/in/ethan-fang-bb0404161/")
-                        .padding(.bottom, 20)
-                      
-                    HorizontalDeveloperView(image: "aayush", name: "Aayush Kadakia", description: "I am the founder of Alpha Business Club and I am interested in the world of finance and business.", email: "kadakiaaayush@gmail.com", link: "https://www.linkedin.com/in/aayush-kadakia-7939531ba/")
-                        .padding(.bottom, 20)
-                }
-                .padding(.top, 20)
             }
         }
         
