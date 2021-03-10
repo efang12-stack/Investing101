@@ -50,8 +50,9 @@ class VideoManager: ObservableObject {
             let title = data["title"] as? String ?? ""
             let summary = data["summary"] as? String ?? ""
             let url = data["url"] as? String ?? ""
+            let image = data["image"] as? String ?? ""
             
-            return Video(id: queryDocumentSnapshot .documentID, title: title, summary: summary, url: url)
+            return Video(id: queryDocumentSnapshot .documentID, title: title, summary: summary, url: url, image: image)
           }
         }
     }

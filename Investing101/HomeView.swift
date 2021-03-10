@@ -10,10 +10,8 @@ import SDWebImageSwiftUI
 import Network
 
 struct HomeView: View {
-    
-    @EnvironmentObject var videoManager : VideoManager
-    @EnvironmentObject var savedArticleManager: SavedArticleManager
-    @EnvironmentObject var savedVideoManager: SavedVideoManager
+        
+    @ObservedObject var videoManager = VideoManager()
     
     @State var chosenArticle: Article = Article()
     @State var chosenCourse: Course = Course()
@@ -25,232 +23,151 @@ struct HomeView: View {
     var body: some View {
         
         NavigationView{
-               
-                    VStack{
+            
+                ZStack{
                         
-                        //MARK: - HEADER
-                        Header(padding: 20) {
-                            
-                            Spacer()
-                                
-                            Image("logo")
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                                .padding(.bottom, 10)
-                            
-                            Text("Alpha\nFinance")
-                                .font(.custom("Verdana", size: 20))
-                                .bold()
-                                .padding(.bottom, 10)
-                                
-                            Spacer()
-                        }
+                    VStack {
                         
-                        ScrollView(.vertical, showsIndicators: false, content: {
+                        Rectangle()
+                            .fill(LinearGradient(gradient: Gradient(colors: [Color.darkGreen, Color.lightGreen]), startPoint: .bottomLeading, endPoint: .topTrailing))
+                            .frame(height: UIScreen.main.bounds.height / 3)
+                            .overlay(
                                 
-                                HStack{
+                                VStack{
                                     
-                                    Text("Last Month's News")
-                                        .bold()
-                                        .foregroundColor(Color.darkGray)
-                                        .padding(.leading)
+                                    Spacer()
+                                    
+                                    Group{
+                                        
+                                        Text("It's A Great Day To")+Text("\nInvest!").bold()
+                                    }
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 27))
+                                    .multilineTextAlignment(.center)
                                     
                                     Spacer()
                                 }
-                                .padding(.top, 10)
-                                
-                                if videoManager.news.count == 0 {
-                                    LoadingView()
-                                }
-                                else{
-                                    
-                                    ScrollView(.horizontal) {
-                                        
-                                        HStack{
-                                            
-                                            ForEach(videoManager.news) { newspaper in
-                                                
-                                                NavigationLink(destination: WebView(url: newspaper.url)) {
-                                                    
-                                                    HorizontalNewsView(newspaper: newspaper)
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                
-                                Divider()
+                            )
+                        
+                        Spacer()
+                    }
+                                  
+                    VStack {
+                        
+                        Text("Last Month's News:")
+                            .foregroundColor(.white)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                        
+                        VStack{
                             
-                                HStack{
-                                    
-                                    Text("Video Of The Week")
-                                        .bold()
-                                        .foregroundColor(Color.darkGray)
-                                        .padding(.leading)
-                                    
-                                    Spacer()
-                                }
-                                .padding(.top, 10)
+                            if videoManager.news.count == 0 {
+                                LoadingView()
+                            }
+                            else{
                                 
-                                if let video = videoManager.specialVideo.first{
+                                LazyVStack{
                                     
-                                    HStack{
-                                    
-                                        if let url = video.url {
+                                    ForEach(videoManager.news) { newspaper in
                                         
-                                            WebView(url: url)
-                                                .frame(width: 150, height: 100)
-                                                .cornerRadius(10)
-                                        }
-                                    
-                                        VStack{
-                                        
-                                            Text(video.title)
-                                                .bold()
-                                                .frame(width: 200)
-                                        
-                                            Text(video.summary)
-                                                .frame(width: 200)
-                                                .multilineTextAlignment(.center)
-                                        }
-                                        .padding(.leading, 5)
+                                        NavigationLink(
+                                            destination: WebView(url: newspaper.url),
+                                            label: {
+                                                HorizontalNewsView(newspaper: newspaper)
+                                            })
                                     }
-                                    
-                                }else {
-                                    LoadingView()
-                                }
-                                
-                                Divider()
-                                
-                                HStack{
-                                    
-                                    Text("Saved Articles")
-                                        .bold()
-                                        .foregroundColor(Color.darkGray)
-                                        .padding(.leading)
-                                    
-                                    Spacer()
-                                }
-                                .padding(.top, 10)
-                                
-                                if savedArticleManager.savedArticles.count == 0 {
-                                    
-                                    VStack {
-                                        
-                                        if savedArticleManager.savedArticleIds.count == 0 {
-                                            
-                                            Text("No Saved Articles")
-                                                .foregroundColor(Color.lightGray2)
-                                                .font(.custom("Arial", size: 17))
-                                                .padding(.vertical, 10)
-                                        }
-                                        else {
-                                            LoadingView()
-                                        }
-                                    }
-                                }
-                                else {
-                                        
-                                    VStack{
-                                        
-                                        ForEach(savedArticleManager.savedArticles) { article in
-                                            
-                                            NavigationLink(destination: DisplayView(chosenArticle: article)) {
-                                                
-                                                VStack {
-                                                    
-                                                    HorizontalArticleView(article: article)
-                                                    
-                                                    Divider()
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                
-                                HStack{
-                                    
-                                    Text("Saved Courses")
-                                        .bold()
-                                        .foregroundColor(Color.darkGray)
-                                        .padding(.leading)
-                                    
-                                    Spacer()
-                                }
-                                .padding(.top, 10)
-                                
-                                if savedVideoManager.savedCourses.count == 0 {
-                                    
-                                    VStack {
-                                        
-                                        if savedVideoManager.savedCourseNames.count == 0 {
-                                            
-                                            Text("No Saved Courses")
-                                                .foregroundColor(Color.lightGray2)
-                                                .font(.custom("Arial", size: 17))
-                                                .padding([.top,.bottom], 10)
-                                        }
-                                        else {
-                                            LoadingView()
-                                        }
-                                    }
-                                }
-                                else {
-                                        
-                                    VStack{
-                                        
-                                        ForEach(savedVideoManager.savedCourses) { course in
-                                            
-                                            NavigationLink(destination: VideosView(chosenCourse: course)) {
-                                                
-                                                VStack{
-                                                    
-                                                    HorizontalCourseView(course: course)
-                                                    
-                                                    Divider()
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                        })
-                        .onAppear{
-                            
-                            monitor.start(queue: queue)
-                            
-                            monitor.pathUpdateHandler = { path in
-                                
-                                if path.status == .satisfied {
-                                    print("We're connected!")
-                                }
-                                else {
-                                    notConnected = true
                                 }
                             }
-                            
-                            savedArticleManager.setArticleIDs()
-
-                            savedVideoManager.setCourseNames()
-                            
-                            self.videoManager.fetchSpecial()
-                            
-                            self.videoManager.fetchNews()
-                            
-                            self.videoManager.fetchArticles(
-                            {
-                                savedArticleManager.getSavedArticles(articles: videoManager.articles)
-                            })
-                            
-                            self.savedVideoManager.getSavedCourses()
                         }
-                        .alert(isPresented: $notConnected) { () -> Alert in
-                            Alert(title: Text("No Internet Connection"),
-                            message: Text("Check Your Network Connection and Try Again."),
-                            dismissButton: .cancel())
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .frame(width: UIScreen.main.bounds.width / 1.3)
+                        .shadow(radius: 5)
+                        .padding(.bottom, 30)
+                    }
+                    
+                    VStack {
+                        
+                        Spacer()
+                        
+                        Text("Video of the Month:")
+                            .foregroundColor(.black)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                        
+                        VStack{
+                            
+                            if let video = videoManager.specialVideo.first {
+                                LazyVStack{
+                                    
+                                    NavigationLink(
+                                        destination: SingleVideoView(video: video),
+                                        label: {
+                                            
+                                            HStack{
+                                            
+                                                VStack {
+                                                    
+                                                    Text(video.title)
+                                                        .font(.system(size: 12, weight: .bold))
+                                                        
+                                                    Text(video.summary)
+                                                        .font(.system(size: 12))
+                                                }
+                                                .frame(width: 180)
+                                            
+                                                WebImage(url: URL(string: video.image))
+                                                    .resizable()
+                                                    .frame(width: 50, height: 50)
+                                                    .cornerRadius(10)
+                                            
+                                                Image(systemName: "chevron.right")
+                                                    .foregroundColor(.lightGray2)
+                                                    .padding(.leading, 2)
+                                            }
+                                            .frame(height: UIScreen.main.bounds.height / 10.5)
+                                        })
+                                }
+                            }
+                            else {
+                                
+                                LoadingView()
+                            }
+                        }
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .frame(width: UIScreen.main.bounds.width / 1.3)
+                        .shadow(radius: 5)
+                    }
+                    .padding(.bottom, UIScreen.main.bounds.height / 7.8)
+                }
+                .edgesIgnoringSafeArea(.all)
+                .onAppear{
+                    
+                    monitor.start(queue: queue)
+                    
+                    monitor.pathUpdateHandler = { path in
+                        
+                        if path.status == .satisfied {
+                            print("We're connected!")
+                        }
+                        else {
+                            notConnected = true
                         }
                     }
-                    .navigationTitle("")
-                    .navigationBarHidden(true)
+                    
+                    self.videoManager.fetchSpecial()
+                    
+                    self.videoManager.fetchNews()
+                    
+                }
+                .alert(isPresented: $notConnected) { () -> Alert in
+                    Alert(title: Text("No Internet Connection"),
+                    message: Text("Check Your Network Connection and Try Again."),
+                    dismissButton: .cancel())
+                }
+                .navigationTitle("")
+                .navigationBarHidden(true)
         }
         .edgesIgnoringSafeArea(.top)
     }

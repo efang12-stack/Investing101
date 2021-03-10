@@ -20,36 +20,27 @@ struct ContactView: View {
             
             VStack {
                 
-                Text("Contact Us")
-                    .font(.system(size: 35, weight: .bold))
-                    .padding(.top, 20)
-                
-                Text("Don't hesitate to send us an email if you have any questions or concerns!")
-                    .font(.custom("Verdana", size: 16))
-                    .foregroundColor(Color.darkGray)
-                    .frame(width: 300, height: 60)
-                    .multilineTextAlignment(.center)
-                
                 Image("logo")
                     .resizable()
-                    .frame(width: 200, height: 200)
+                    .frame(width: 220, height: 220)
                     .padding(.top, -3)
-                
                 
                 Button(action: {
                     
                     MFMailComposeViewController.canSendMail() ? self.isShowingMailView.toggle() : self.alertNoMail.toggle()
                         }) {
                             Text("Email Us!")
-                                .foregroundColor(.white)
-                                .font(.custom("Verdana", size:18))
+                                .foregroundColor(.black)
+                                .font(.custom("Verdana", size:16))
 
                         }
-                        .padding([.top, .bottom], 22)
-                        .padding([.leading, .trailing], 60)
-                        .background(Color.black)
-                        .cornerRadius(40)
-                        .shadow(color: .black, radius: 1, x: 0, y: 0 )
+                        .padding([.top, .bottom], 16)
+                        .padding([.leading, .trailing], 45)
+                        .background(
+                        
+                        Capsule()
+                            .stroke(Color.black, lineWidth: 2)
+                        )
                         .disabled(!MFMailComposeViewController.canSendMail())
                         .sheet(isPresented: $isShowingMailView) {
                             MailView(result: self.$result)
@@ -58,104 +49,24 @@ struct ContactView: View {
                             Alert(title: Text("Mail App Not Setup"), dismissButton: .cancel())
                         }
                 
-                Divider()
-                    .padding(.top, 20)
-                
                 VStack {
                     
                     Text("Meet The Developers")
                         .font(.custom("Verdana", size: 17))
-                        .foregroundColor(Color.darkerGray)
+                        .foregroundColor(Color.black)
                         .bold()
                         .padding(.bottom, 20)
                     
-                        
-                        HStack{
-                            Image("ethan")
-                                .resizable()
-                                .frame(width: 100, height: 120)
-                                .cornerRadius(5)
-                            
-                            VStack{
-                                Text("Ethan Fang")
-                                    .bold()
-                                    .font(.custom("Arial", size: 18))
-                                    .foregroundColor(Color.darkGray)
-                                    .frame(width: 270)
-                                    .padding(.bottom, 5)
-                                
-                                Text("Email: ethanfang10@gmail.com")
-                                    .font(.custom("Verdana", size: 15))
-                                    .foregroundColor(Color.lightGray2)
-                                    .frame(width: 270)
-                                
-                                Link( destination: URL(string: "https://www.linkedin.com/in/ethan-fang-bb0404161/")!, label: {
-                                    
-                                    HStack {
-                                        Text("LinkedIn")
-                                            .font(.custom("Verdana", size: 18))
-                                            .foregroundColor(Color.darkBlue)
-                                            
-                                            
-                                        
-                                        Image("linkedin")
-                                            .resizable()
-                                            .frame(width: 45, height: 37)
-                                    }
-                                })
-                                
-                                Spacer()
-                                
-                            }
-                        }
+                    HorizontalDeveloperView(image: "ethan", name: "Ethan Fang", description: "I am a app developer who has coded multiple projects in Swift. I am interested in finance and computer science.", email: "ethanfang10@gmail.com", link: "https://www.linkedin.com/in/ethan-fang-bb0404161/")
                         .padding(.bottom, 20)
-                    
-                        
-                        HStack{
-                            Image("aayush")
-                                .resizable()
-                                .frame(width: 100, height: 120)
-                                .cornerRadius(5)
-                            
-                            VStack{
-                                Text("Aayush Kadakia")
-                                    .bold()
-                                    .font(.custom("Arial", size: 18))
-                                    .foregroundColor(Color.darkGray)
-                                    .padding(.bottom, 5)
-                                    .frame(width: 270)
-                                    
-                                
-                                Text("Email: kadakiaaayush@gmail.com")
-                                    .font(.custom("Verdana", size: 15))
-                                    .foregroundColor(Color.lightGray2)
-                                    .frame(width: 270)
-                                
-                                Link( destination: URL(string: "https://www.linkedin.com/in/aayush-kadakia-7939531ba/")!, label: {
-                                    
-                                    HStack {
-                                        Text("LinkedIn")
-                                            .font(.custom("Verdana", size: 18))
-                                            .foregroundColor(Color.darkBlue)
-                                            
-                                         
-                                        
-                                        Image("linkedin")
-                                            .resizable()
-                                            .frame(width: 45, height: 37)
-                                    }
-                                })
-                                    
-                                
-                                Spacer()
-                            }
-                        }
+                      
+                    HorizontalDeveloperView(image: "aayush", name: "Aayush Kadakia", description: "I am the founder of Alpha Business Club and I am interested in the world of finance and business.", email: "kadakiaaayush@gmail.com", link: "https://www.linkedin.com/in/aayush-kadakia-7939531ba/")
                         .padding(.bottom, 20)
-                    
                 }
                 .padding(.top, 20)
             }
         }
+        
     }
 }
 

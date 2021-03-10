@@ -29,6 +29,12 @@ struct ContentView: View {
                     Text("Articles")
                 }
             
+            SavedView()
+                .tabItem {
+                    Image(systemName: "bookmark")
+                    Text("Saved")
+                }
+            
             
             ContactView()
                 .tabItem {

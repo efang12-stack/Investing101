@@ -37,6 +37,8 @@
 		AAAE396F25AE9AA7009CF83A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAE396E25AE9AA7009CF83A /* Preview Assets.xcassets */; };
 		AAAE397A25AE9AA7009CF83A /* Investing101Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE397925AE9AA7009CF83A /* Investing101Tests.swift */; };
 		AAAE398525AE9AA7009CF83A /* Investing101UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAE398425AE9AA7009CF83A /* Investing101UITests.swift */; };
+		AAB2EDE225F6AC610084E775 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2EDE125F6AC610084E775 /* SavedView.swift */; };
+		AAB2EDE725F6B1B90084E775 /* HorizontalDeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2EDE625F6B1B90084E775 /* HorizontalDeveloperView.swift */; };
 		AABE853D25AFE07E00ECE51E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABE853C25AFE07E00ECE51E /* Color.swift */; };
 		AACD842E25BB8719006F807F /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACD842D25BB8719006F807F /* DisplayView.swift */; };
 		AAED714C25EC6E390019A2C7 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAED714B25EC6E390019A2C7 /* Summary.swift */; };
@@ -102,6 +104,8 @@
 		AAAE398025AE9AA7009CF83A /* Investing101UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Investing101UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAE398425AE9AA7009CF83A /* Investing101UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Investing101UITests.swift; sourceTree = "<group>"; };
 		AAAE398625AE9AA7009CF83A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAB2EDE125F6AC610084E775 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
+		AAB2EDE625F6B1B90084E775 /* HorizontalDeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalDeveloperView.swift; sourceTree = "<group>"; };
 		AABE853C25AFE07E00ECE51E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		AACD842D25BB8719006F807F /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		AAED714B25EC6E390019A2C7 /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
@@ -201,10 +205,13 @@
 		AA9F4A6F25E6DABB00602D24 /* Horizontal Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA9F4A7025E6DB0200602D24 /* Header.swift */,
+				AAED714B25EC6E390019A2C7 /* Summary.swift */,
 				AA9F4A6025E6CE9A00602D24 /* HorizontalNewsView.swift */,
 				AA9F4A6525E6CF5400602D24 /* HorizontalArticleView.swift */,
 				AA9F4A6A25E6D28F00602D24 /* HorizontalCourseView.swift */,
 				AA9F4A7825E7357500602D24 /* HorizontalVideosView.swift */,
+				AAB2EDE625F6B1B90084E775 /* HorizontalDeveloperView.swift */,
 			);
 			path = "Horizontal Views";
 			sourceTree = "<group>";
@@ -239,14 +246,14 @@
 				AA282EB425B228A200B9B97B /* AppDelegate.swift */,
 				AAAE396925AE9AA6009CF83A /* ContentView.swift */,
 				AA65126425B133DD00D84D49 /* HomeView.swift */,
-				AA9F4A7025E6DB0200602D24 /* Header.swift */,
-				AAED714B25EC6E390019A2C7 /* Summary.swift */,
 				AA9F4A8525E743E300602D24 /* WebView.swift */,
+				AA58D9E425C10AE500383AFD /* LoadingView.swift */,
+				AA430EB625C7707900F01EE9 /* SavedManagers */,
 				AA9F4A6F25E6DABB00602D24 /* Horizontal Views */,
 				AA87790125B354800002AE29 /* Courses */,
 				AAB82C6525C25B7300D6F2F6 /* Articles */,
+				AAB2EDEC25F860B80084E775 /* Saved */,
 				AAB82C6625C25B8A00D6F2F6 /* Contact */,
-				AA58D9E425C10AE500383AFD /* LoadingView.swift */,
 				AA8778F325B28F800002AE29 /* Structs */,
 				AA8778F225B28F760002AE29 /* Managers */,
 				AABE853B25AFE06F00ECE51E /* Colors */,
@@ -283,12 +290,19 @@
 			path = Investing101UITests;
 			sourceTree = "<group>";
 		};
+		AAB2EDEC25F860B80084E775 /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				AAB2EDE125F6AC610084E775 /* SavedView.swift */,
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
 		AAB82C6525C25B7300D6F2F6 /* Articles */ = {
 			isa = PBXGroup;
 			children = (
 				AA65126925B1349800D84D49 /* ArticlesView.swift */,
 				AACD842D25BB8719006F807F /* DisplayView.swift */,
-				AA430EB625C7707900F01EE9 /* SavedManagers */,
 			);
 			path = Articles;
 			sourceTree = "<group>";
@@ -552,6 +566,7 @@
 				AA8778FD25B3547C0002AE29 /* VideosView.swift in Sources */,
 				AA9F4A6125E6CE9A00602D24 /* HorizontalNewsView.swift in Sources */,
 				AA65126F25B134A700D84D49 /* ContactView.swift in Sources */,
+				AAB2EDE225F6AC610084E775 /* SavedView.swift in Sources */,
 				AA430E6A25C6094900F01EE9 /* SavedArticleManager.swift in Sources */,
 				AA8778EE25B28CCA0002AE29 /* VideoManager.swift in Sources */,
 				AA282EB525B228A200B9B97B /* AppDelegate.swift in Sources */,
@@ -569,6 +584,7 @@
 				AA9F4A7125E6DB0200602D24 /* Header.swift in Sources */,
 				AA789C1825B91C370035DBC9 /* Article.swift in Sources */,
 				AA9F4A7925E7357500602D24 /* HorizontalVideosView.swift in Sources */,
+				AAB2EDE725F6B1B90084E775 /* HorizontalDeveloperView.swift in Sources */,
 				AAAE396825AE9AA6009CF83A /* Investing101App.swift in Sources */,
 				AABE853D25AFE07E00ECE51E /* Color.swift in Sources */,
 				AA8778F525B28F930002AE29 /* Video.swift in Sources */,
@@ -740,7 +756,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ethanfang.Investing101;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ethanfang.alphafinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -763,7 +779,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ethanfang.Investing101;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ethanfang.alphafinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

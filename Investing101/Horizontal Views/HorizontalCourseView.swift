@@ -35,6 +35,7 @@ struct HorizontalCourseView: View {
             }
             
             Image(systemName: "chevron.right")
+                .foregroundColor(.lightGray2)
                 .padding(.leading, 15)
                 .font(.headline)
         }

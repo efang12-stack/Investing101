@@ -15,7 +15,7 @@ struct Investing101App: App {
     @StateObject var savedArticleManager = SavedArticleManager()
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(videoManager).environmentObject(savedVideoManager).environmentObject(savedArticleManager)
+            ContentView()
         }
     }
 }

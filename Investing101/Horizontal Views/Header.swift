@@ -11,28 +11,28 @@ import SwiftUI
 struct Header<TitleContent: View> : View {
     
     var title: TitleContent
-    var padding: CGFloat
     
-    init(padding: CGFloat, @ViewBuilder _ title:  () -> (TitleContent)) {
+    init(@ViewBuilder _ title:  () -> (TitleContent)) {
         self.title = title()
-        self.padding = padding
+
     }
     
     var body: some View {
         
         HStack{
+            
             title
         }
-        .padding(.top, padding)
-        .foregroundColor(.primary)
+        .padding(.top, 30)
         .overlay(Rectangle()
         .stroke(Color.primary.opacity(0.1), lineWidth: 1)
         .shadow(radius: 3)
         .edgesIgnoringSafeArea(.top))
-
-        
+        .background(
+    
+            Rectangle()
+                .fill(Color.lightGray)
+                .edgesIgnoringSafeArea(.top)
+        )
     }
-    
-    
-    
 }

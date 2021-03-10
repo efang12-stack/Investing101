@@ -27,7 +27,7 @@ struct CoursesView: View {
             
             VStack{
                 
-                Header(padding: 30) {
+                Header{
                     
                     Text("Courses")
                         .font(.system(size: 35, weight: .bold))

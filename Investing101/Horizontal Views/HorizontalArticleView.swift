@@ -32,6 +32,8 @@ struct HorizontalArticleView: View {
                     .resizable()
                     .frame(width: 100, height: 100)
                     .cornerRadius(10)
+                    .aspectRatio(contentMode: .fit)
+
             }
             .frame(height: 135)   
     }

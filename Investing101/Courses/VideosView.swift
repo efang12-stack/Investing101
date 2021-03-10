@@ -12,8 +12,8 @@ import SDWebImageSwiftUI
 struct VideosView: View {
     @State var chosenCourse: Course
     
-    @EnvironmentObject var videoManager: VideoManager
-    @EnvironmentObject var savedVideoManager : SavedVideoManager
+    @ObservedObject var videoManager = VideoManager()
+    @ObservedObject var savedVideoManager = SavedVideoManager()
     
     var body: some View {
         

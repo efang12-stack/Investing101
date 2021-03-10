@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct DisplayView: View {
     
     @State var chosenArticle: Article
-    @EnvironmentObject var savedArticleManager: SavedArticleManager
+    @ObservedObject var savedArticleManager = SavedArticleManager()
     
     var body: some View {
         

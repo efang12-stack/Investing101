@@ -28,4 +28,6 @@ extension Color {
     static let profesColor1 = Color.rgb(r: 255, g: 204, b: 153)
     static let profesColor2 = Color.rgb(r: 0, g: 76, b: 153)
     static let darkBlue = Color.rgb(r: 14, g: 118, b: 168)
+    static let darkGreen = Color.rgb(r: 0, g: 153, b: 76)
+    static let lightGreen = Color.rgb(r: 102, g: 204, b: 0)
 }
