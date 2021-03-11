@@ -31,21 +31,24 @@ struct HorizontalDeveloperView: View {
                     Text(name)
                         .bold()
                         .font(.custom("Arial", size: 18))
-                        .frame(width: 270)
+                        .foregroundColor(.black)
+                        .frame(width: 230, alignment: .leading)
                         .padding(.bottom, 3)
                     
                     Text(description)
-                        .font(.custom("Arial", size: 15))
+                        .font(.custom("Arial", size: 13))
+                        .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
                         .frame(width: 230)
                 }
                 .frame(height: 120)
-                .padding(.leading, -5)
+                .padding(.leading, 2)
             }
             .padding(.bottom, 5)
             
             Text("Email: \(email)")
                 .font(.custom("Verdana", size: 15))
+                .foregroundColor(.black)
                 .frame(width: 270)
             
             Link(destination: URL(string: link)!, label: {

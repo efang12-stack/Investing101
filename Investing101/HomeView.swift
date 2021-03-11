@@ -17,6 +17,13 @@ struct HomeView: View {
     @State var chosenCourse: Course = Course()
     @State var notConnected = false
     
+    var resources: [Resource] = [
+        Resource(image: "yahoo", name: "Yahoo Finance", url: "https://finance.yahoo.com"),
+        Resource(image: "investopedia", name: "Investopedia", url: "https://www.investopedia.com"),
+        Resource(image: "morningstar", name: "Morningstar", url: "https://www.morningstar.com"),
+        Resource(image: "marketwatch", name: "Market Watch", url: "https://www.marketwatch.com")
+    ]
+    
     let monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "Monitor")
     
@@ -24,150 +31,221 @@ struct HomeView: View {
         
         NavigationView{
             
-                ZStack{
-                        
-                    VStack {
-                        
-                        Rectangle()
-                            .fill(LinearGradient(gradient: Gradient(colors: [Color.darkGreen, Color.lightGreen]), startPoint: .bottomLeading, endPoint: .topTrailing))
-                            .frame(height: UIScreen.main.bounds.height / 3)
-                            .overlay(
-                                
-                                VStack{
-                                    
-                                    Spacer()
-                                    
-                                    Group{
-                                        
-                                        Text("It's A Great Day To")+Text("\nInvest!").bold()
-                                    }
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 27))
-                                    .multilineTextAlignment(.center)
-                                    
-                                    Spacer()
-                                }
-                            )
-                        
-                        Spacer()
-                    }
-                                  
-                    VStack {
-                        
-                        Text("Last Month's News:")
-                            .foregroundColor(.white)
-                            .bold()
-                            .multilineTextAlignment(.center)
-                        
-                        VStack{
+            ZStack{
+                    
+                VStack {
+                    
+                    Rectangle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color.darkGreen, Color.lightGreen]), startPoint: .bottomLeading, endPoint: .topTrailing))
+                        .frame(height: UIScreen.main.bounds.height / 3)
+                        .overlay(
                             
-                            if videoManager.news.count == 0 {
-                                LoadingView()
-                            }
-                            else{
+                            VStack{
                                 
-                                LazyVStack{
+                                Spacer()
+                                
+                                Group{
                                     
-                                    ForEach(videoManager.news) { newspaper in
+                                    Text("It's A Great Day To")+Text("\nInvest!").bold()
+                                }
+                                .foregroundColor(.white)
+                                .font(.system(size: 27))
+                                .multilineTextAlignment(.center)
+                                
+                                Spacer()
+                            }
+                        )
+                    
+                    Spacer()
+                }
+                   
+                VStack {
+                    
+                    Rectangle().fill(Color.clear).frame(height: UIScreen.main.bounds.height / 4)
+                    
+                    ScrollView{
+                        
+                        VStack {
+                            
+                            Text("Last Month's News:")
+                                .foregroundColor(.white)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            
+                            BubbleView{
+                                
+                                if videoManager.news.count == 0 {
+                                    LoadingView()
+                                }
+                                else{
+                                    
+                                    LazyVStack{
+                                        
+                                        ForEach(videoManager.news) { newspaper in
+                                            
+                                            NavigationLink(
+                                                destination: WebView(url: newspaper.url),
+                                                label:
+                                                {
+                                                    HorizontalNewsView      (newspaper:             newspaper)
+                                                }
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                            .padding(.bottom, 40)
+                            
+                            VStack {
+                                
+                                Text("Resources:")
+                                    .foregroundColor(.black)
+                                    .bold()
+                                    .multilineTextAlignment(.center)
+                                
+                                BubbleView{
+                                    
+                                    LazyVStack{
+                                        
+                                        ForEach(resources) { resource in
+                                            
+                                            NavigationLink(
+                                                destination: WebView(url: resource.url),
+                                                label: {
+                                                    HorizontalResourceView(resource: resource)
+                                                })
+                                        }
+                                    }
+                                }
+                            }
+                            .padding(.bottom, 40)
+                            
+                            Text("Video of the Month:")
+                                .foregroundColor(.black)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            
+                            BubbleView{
+                                
+                                if let video = videoManager.specialVideo.first{
+                                    LazyVStack{
                                         
                                         NavigationLink(
-                                            destination: WebView(url: newspaper.url),
+                                            destination: SingleSpecialView(video: video),
                                             label: {
-                                                HorizontalNewsView(newspaper: newspaper)
+                                                
+                                                HStack{
+                                                    
+                                                    VStack {
+                                                        
+                                                        Text(video.title)
+                                                            .font(.system(size: 12, weight: .bold))
+                                                        
+                                                        Text(video.summary)
+                                                            .font(.system(size: 12))
+                                                    }
+                                                    .frame(width: 180)
+                                                    
+                                                    WebImage(url: URL(string: video.image))
+                                                        .resizable()
+                                                        .frame(width: 50, height: 50)
+                                                        .cornerRadius(10)
+                                                    
+                                                    Image(systemName: "chevron.right")
+                                                        .foregroundColor(.lightGray2)
+                                                        .padding(.leading, 2)
+                                                }
+                                                .frame(height: UIScreen.main.bounds.height / 6)
                                             })
                                     }
                                 }
-                            }
-                        }
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .frame(width: UIScreen.main.bounds.width / 1.3)
-                        .shadow(radius: 5)
-                        .padding(.bottom, 30)
-                    }
-                    
-                    VStack {
-                        
-                        Spacer()
-                        
-                        Text("Video of the Month:")
-                            .foregroundColor(.black)
-                            .bold()
-                            .multilineTextAlignment(.center)
-                        
-                        VStack{
-                            
-                            if let video = videoManager.specialVideo.first {
-                                LazyVStack{
+                                else {
                                     
-                                    NavigationLink(
-                                        destination: SingleSpecialView(video: video),
-                                        label: {
-                                            
-                                            HStack{
-                                            
-                                                VStack {
-                                                    
-                                                    Text(video.title)
-                                                        .font(.system(size: 12, weight: .bold))
-                                                        
-                                                    Text(video.summary)
-                                                        .font(.system(size: 12))
-                                                }
-                                                .frame(width: 180)
-                                            
-                                                WebImage(url: URL(string: video.image))
-                                                    .resizable()
-                                                    .frame(width: 50, height: 50)
-                                                    .cornerRadius(10)
-                                            
-                                                Image(systemName: "chevron.right")
-                                                    .foregroundColor(.lightGray2)
-                                                    .padding(.leading, 2)
-                                            }
-                                            .frame(height: UIScreen.main.bounds.height / 10.5)
-                                        })
+                                    LoadingView()
                                 }
                             }
-                            else {
-                                
-                                LoadingView()
+                            .padding(.bottom, 40)
+                            
+                            Text("Article of the Month:")
+                                .foregroundColor(.black)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            
+                            BubbleView{
+                                if let article = videoManager.specialArticle.first{
+                                    LazyVStack{
+                                        
+                                        NavigationLink(
+                                            destination: DisplayView(chosenArticle: article),
+                                            label: {
+                                                
+                                                HStack{
+                                                    
+                                                    VStack {
+                                                        
+                                                        Text(article.title)
+                                                            .font(.system(size: 12, weight: .bold))
+                                                            .padding(.bottom, 2)
+                                                        
+                                                        Text("By: \(article.author)")
+                                                            .font(.system(size: 12))
+                                                            .frame(width: 180, alignment: .leading)
+                                                    }
+                                                    .frame(width: 180)
+                                                    
+                                                    WebImage(url: URL(string: article.image))
+                                                        .resizable()
+                                                        .frame(width: 50, height: 50)
+                                                        .cornerRadius(10)
+                                                    
+                                                    Image(systemName: "chevron.right")
+                                                        .foregroundColor(.lightGray2)
+                                                        .padding(.leading, 2)
+                                                }
+                                                .frame(height: UIScreen.main.bounds.height / 6)
+                                            })
+                                    }
+                                }
+                                else {
+                                    LoadingView()
+                                }
                             }
                         }
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .frame(width: UIScreen.main.bounds.width / 1.3)
-                        .shadow(radius: 5)
+                        .frame(maxWidth: .infinity)
+                        .padding(.bottom, UIScreen.main.bounds.height / 8.7)
                     }
-                    .padding(.bottom, UIScreen.main.bounds.height / 7.8)
                 }
-                .edgesIgnoringSafeArea(.all)
-                .onAppear{
+            }
+            .edgesIgnoringSafeArea(.all)
+            .onAppear{
+                
+                monitor.start(queue: queue)
+                
+                monitor.pathUpdateHandler = { path in
                     
-                    monitor.start(queue: queue)
-                    
-                    monitor.pathUpdateHandler = { path in
-                        
-                        if path.status == .satisfied {
-                            print("We're connected!")
-                        }
-                        else {
-                            notConnected = true
-                        }
+                    if path.status == .satisfied {
+                        print("We're connected!")
                     }
-                    
-                    self.videoManager.fetchSpecial()
-                    
-                    self.videoManager.fetchNews()
-                    
+                    else {
+                        notConnected = true
+                    }
                 }
-                .alert(isPresented: $notConnected) { () -> Alert in
-                    Alert(title: Text("No Internet Connection"),
-                    message: Text("Check Your Network Connection and Try Again."),
-                    dismissButton: .cancel())
-                }
-                .navigationTitle("")
-                .navigationBarHidden(true)
+                
+                self.videoManager.fetchSpecial()
+                
+                self.videoManager.fetchSpecialArticle()
+
+                
+                self.videoManager.fetchNews()
+                
+            }
+            .alert(isPresented: $notConnected) { () -> Alert in
+                Alert(title: Text("No Internet Connection"),
+                message: Text("Check Your Network Connection and Try Again."),
+                dismissButton: .cancel())
+            }
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
         .edgesIgnoringSafeArea(.top)
     }

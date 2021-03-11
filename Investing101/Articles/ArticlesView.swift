@@ -15,7 +15,9 @@ struct ArticlesView: View {
     @State var articleSection: [Sectional] = [
         Sectional(name: "Market Opportunities", articles: []),
         Sectional(name: "Quantitative Finance", articles: []),
-        Sectional(name: "Personal Financial Literacy", articles: [])
+        Sectional(name: "Personal Financial Literacy", articles: []),
+        Sectional(name: "Cryptocurrency", articles:[]),
+        Sectional(name: "Professional Development", articles: [])
     ]
     
     var body: some View {

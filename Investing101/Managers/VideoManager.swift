@@ -13,6 +13,7 @@ class VideoManager: ObservableObject {
     
     @Published var videos = [Video]()
     @Published var specialVideo = [Video]()
+    @Published var specialArticle = [Article]()
     @Published var articles = [Article]()
     @Published var news = [News]()
     let db = Firestore.firestore()
@@ -57,6 +58,25 @@ class VideoManager: ObservableObject {
         }
     }
     
+    func fetchSpecialArticle() {
+        db.collection("specialarticle").getDocuments { (querySnapshot, error) in
+          guard let documents = querySnapshot?.documents else {
+            print("No articles")
+            return
+          }
+
+          self.specialArticle = documents.map { queryDocumentSnapshot -> Article in
+            let data = queryDocumentSnapshot.data()
+            let title = data["title"] as? String ?? ""
+            let text = data["text"] as? String ?? ""
+            let newText = text.replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\t", with: "\t")
+            let image = data["image"] as? String ?? ""
+            let author = data["author"] as? String ?? ""
+            
+            return Article(id: queryDocumentSnapshot .documentID, title: title, text: newText, image: image, author: author)
+          }
+        }
+    }
     
     func fetchArticles(_ completion: @escaping () -> ()) {
         db.collection("articles").getDocuments { (querySnapshot, error) in
@@ -69,7 +89,7 @@ class VideoManager: ObservableObject {
             let data = queryDocumentSnapshot.data()
             let title = data["title"] as? String ?? ""
             let text = data["text"] as? String ?? ""
-            let newText = text.replacingOccurrences(of: "\\n", with: "\n")
+            let newText = text.replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\t", with: "\t")
             let image = data["image"] as? String ?? ""
             let category = data["category"] as? String ?? ""
             let author = data["author"] as? String ?? ""
