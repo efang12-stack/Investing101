@@ -14,8 +14,8 @@ struct Article: Identifiable, Codable {
     var title: String = ""
     var text: String = ""
     var image: String = ""
-    var category: String = ""
     var author: String = ""
+    var category: String = ""
 }
 
 struct Sectional: Identifiable {

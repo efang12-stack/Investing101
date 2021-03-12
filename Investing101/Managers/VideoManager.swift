@@ -91,11 +91,10 @@ class VideoManager: ObservableObject {
             let text = data["text"] as? String ?? ""
             let newText = text.replacingOccurrences(of: "\\n", with: "\n").replacingOccurrences(of: "\\t", with: "\t")
             let image = data["image"] as? String ?? ""
-            let category = data["category"] as? String ?? ""
             let author = data["author"] as? String ?? ""
+            let category = data["category"] as? String ?? ""
             
-            
-            return Article(id: queryDocumentSnapshot .documentID, title: title, text: newText, image: image, category: category, author: author)
+            return Article(id: queryDocumentSnapshot .documentID, title: title, text: newText, image: image, author: author, category: category)
           }
             completion()
         }
@@ -118,6 +117,24 @@ class VideoManager: ObservableObject {
           }
         }
     }
+    
+//    func fetchWriters() {
+//        db.collection("writers").getDocuments { (querySnapshot, error) in
+//          guard let documents = querySnapshot?.documents else {
+//            print("No articles")
+//            return
+//          }
+//
+//          self.writers = documents.map { queryDocumentSnapshot -> Writer in
+//            let data = queryDocumentSnapshot.data()
+//            let name = data["name"] as? String ?? ""
+//            let image = data["image"] as? String ?? ""
+//            
+//            return Writer(id: queryDocumentSnapshot .documentID, name: name, image: image)
+//          }
+//        }
+//        
+//    }
     
     
 }

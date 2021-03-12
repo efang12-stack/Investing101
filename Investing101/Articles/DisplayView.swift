@@ -25,7 +25,7 @@ struct DisplayView: View {
 
 
                                 Text(chosenArticle.title)
-                                    .font(.custom("Arial", size: 30))
+                                    .font(.custom("Verdana", size: 28))
                                     .bold()
                                     .padding(.horizontal, 20)
                                     .padding(.top, 10)
@@ -52,7 +52,7 @@ struct DisplayView: View {
                                 }
 
                                 Text(chosenArticle.text)
-                                    .font(.custom("Times New Roman", size: 21))
+                                    .font(.custom("Verdana", size: 19))
                                     .padding(.horizontal, 20)
                                 
                                 Text("If you are interested in writing for us, send us an email at contactus.alphafinance@gmail.com.")
@@ -122,6 +122,6 @@ struct DisplayView: View {
 
 struct DisplayView_Previews: PreviewProvider {
     static var previews: some View {
-        DisplayView(chosenArticle: Article(title: "How to Build A Company", text: "This is the first part to building a company", image: "", category: "Fin Tech", author: "Ethan Fang"))
+        DisplayView(chosenArticle: Article(title: "How to Build A Company", text: "This is the first part to building a company", image: "", author: "Ethan Fang", category: "Fin Tech"))
     }
 }

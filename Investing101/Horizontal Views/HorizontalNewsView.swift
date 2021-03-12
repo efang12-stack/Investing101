@@ -18,18 +18,18 @@ struct HorizontalNewsView: View {
             HStack{
                 
                 Text(newspaper.title)
-                    .font(.system(size: 12, weight: .bold))
+                    .font(.custom("Verdana", size: 14))
+                    .bold()
                     .frame(width: 180)
                 
                 WebImage(url: URL(string: newspaper.image))
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 50, height: 50)
+                    .frame(width: UIScreen.main.bounds.height / 12.5, height: UIScreen.main.bounds.height / 12.5)
                     .cornerRadius(10)
                 
                 Image(systemName: "chevron.right")
                     .foregroundColor(.lightGray2)
-                    .padding(.leading, 2)
+                    .padding(.leading, 10)
             }
             .frame(height: UIScreen.main.bounds.height / 11)
             

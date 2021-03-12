@@ -23,7 +23,7 @@ struct BubbleView<TitleContent: View>: View {
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .frame(width: UIScreen.main.bounds.width / 1.3)
+        .frame(width: UIScreen.main.bounds.width / 1.1)
         .shadow(radius: 5)
     }
 }

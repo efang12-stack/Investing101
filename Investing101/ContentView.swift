@@ -23,7 +23,7 @@ struct ContentView: View {
                     Text("Courses")
                 }
             
-            ArticlesView()
+            ArticleCourseView()
                 .tabItem {
                     Image(systemName: "newspaper")
                     Text("Articles")

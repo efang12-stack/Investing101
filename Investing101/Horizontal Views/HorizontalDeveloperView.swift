@@ -30,13 +30,13 @@ struct HorizontalDeveloperView: View {
                     
                     Text(name)
                         .bold()
-                        .font(.custom("Arial", size: 18))
+                        .font(.custom("Verdana", size: 18))
                         .foregroundColor(.black)
                         .frame(width: 230, alignment: .leading)
                         .padding(.bottom, 3)
                     
                     Text(description)
-                        .font(.custom("Arial", size: 13))
+                        .font(.custom("Verdana", size: 11))
                         .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
                         .frame(width: 230)

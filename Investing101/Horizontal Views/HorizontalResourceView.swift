@@ -18,18 +18,19 @@ struct HorizontalResourceView: View {
             HStack{
                 
                 Text(resource.name)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.custom("Verdana", size: 18))
+                    .bold()
                     .frame(width: 180)
                 
                 Image(resource.image)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 50, height: 50)
+                    .frame(width: UIScreen.main.bounds.height / 12.5, height: UIScreen.main.bounds.height / 12.5)
                     .cornerRadius(10)
                 
                 Image(systemName: "chevron.right")
                     .foregroundColor(.lightGray2)
-                    .padding(.leading, 2)
+                    .padding(.leading, 10)
             }
             .padding(.top, 2)
             .frame(height: UIScreen.main.bounds.height / 11)

@@ -30,7 +30,7 @@ struct Summary: View {
             HStack{
                 
                 Text(description)
-                    .font(.custom("San Francisco", size: 18))
+                    .font(.custom("Verdana", size: 16))
                     .multilineTextAlignment(.leading)
                     .frame(width: 350)
                     .padding(.leading, 15)

@@ -1,8 +1,8 @@
 //
-//  HorizontalArticleView.swift
+//  HorizontalArticleSavedView.swift
 //  Investing101
 //
-//  Created by Ethan on 2/24/21.
+//  Created by Ethan on 3/10/21.
 //
 
 import SwiftUI
@@ -13,12 +13,15 @@ struct HorizontalArticleView: View {
     var article: Article
     var body: some View {
         
-            HStack(spacing: 50){
+        HStack {
+            
+            HStack(spacing: 40){
                 
                 VStack {
                     
                     Text(article.title)
-                        .font(.system(size: 19, weight: .bold))
+                        .font(.custom("Verdana", size: 15))
+                        .bold()
                         .frame(width: 200, height: 90, alignment: .leading)
                     
                     Text("By "+(article.author))
@@ -33,14 +36,18 @@ struct HorizontalArticleView: View {
                     .scaledToFill()
                     .frame(width: 100, height: 100)
                     .cornerRadius(10)
-                    
 
             }
-            .frame(height: 135)   
+            .frame(height: 115)
+            
+            Image(systemName: "chevron.right")
+                .foregroundColor(.lightGray2)
+                .font(.headline)
+        }
     }
 }
 
-struct HorizontalArticleView_Previews: PreviewProvider {
+struct HorizontalArticleSavedView_Previews: PreviewProvider {
     static var previews: some View {
         HorizontalArticleView(article: Article())
     }

@@ -13,32 +13,39 @@ struct HorizontalCourseView: View {
     
     var body: some View {
         
-        HStack{
+        VStack {
             
-            Image(course.image)
-                .resizable()
-                .frame(width: 100, height: 100)
-                .cornerRadius(10)
-                .padding(.trailing, 20)
-            
-            
-            VStack{
-                Text(course.courseTitle)
-                    .font(.custom("Verdana", size: 15))
-                    .bold()
-                    .frame(maxWidth: 180, alignment: .leading)
-                    .padding(.bottom, 1)
+            HStack{
                 
-                Text(course.description)
-                    .font(.custom("Verdana", size: 14))
-                    .foregroundColor(Color.darkGray)
-                    .frame(maxWidth: 180, alignment: .leading)
+                Image(course.image)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(10)
+                    .padding(.trailing, 20)
+                
+                
+                VStack{
+                    Text(course.courseTitle)
+                        .font(.custom("Verdana", size: 15))
+                        .bold()
+                        .frame(maxWidth: 180, alignment: .leading)
+                        .padding(.bottom, 1)
+                    
+                    Text(course.description)
+                        .font(.custom("Verdana", size: 14))
+                        .foregroundColor(Color.darkGray)
+                        .frame(maxWidth: 180, alignment: .leading)
+                }
+                
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.lightGray2)
+                    .padding(.leading, 15)
+                    .font(.headline)
             }
             
-            Image(systemName: "chevron.right")
-                .foregroundColor(.lightGray2)
-                .padding(.leading, 15)
-                .font(.headline)
+            Divider()
+                .padding(.top, 10)
+                .padding(.bottom, 5)
         }
     }
 }

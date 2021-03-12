@@ -46,10 +46,11 @@ struct HomeView: View {
                                 
                                 Group{
                                     
-                                    Text("It's A Great Day To")+Text("\nInvest!").bold()
+                                    Text("It's A Great Day To")+Text("\nInvest!")
+                                        .bold()
                                 }
                                 .foregroundColor(.white)
-                                .font(.system(size: 27))
+                                .font(.custom("Verdana", size: 24))
                                 .multilineTextAlignment(.center)
                                 
                                 Spacer()
@@ -58,40 +59,125 @@ struct HomeView: View {
                     
                     Spacer()
                 }
+                
+                VStack{
+                    
+                    HStack {
+                        
+                        Spacer()
+                        
+                        NavigationLink(
+                        destination: WritersView(),
+                        label: {
+                            Image(systemName: "person.circle")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.width / 12, height: UIScreen.main.bounds.width / 12)
+                                .foregroundColor(.white)
+                                .padding([.trailing, .top], 25)
+                                .padding(.top, 20)
+                        })
+                    }
+                    
+                    Spacer()
+                }
                    
                 VStack {
                     
-                    Rectangle().fill(Color.clear).frame(height: UIScreen.main.bounds.height / 4)
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(height: UIScreen.main.bounds.height / 4)
                     
                     ScrollView{
                         
                         VStack {
                             
-                            Text("Last Month's News:")
+                            Text("Where To Start:")
+                                .font(.custom("Verdana", size: 18))
                                 .foregroundColor(.white)
                                 .bold()
                                 .multilineTextAlignment(.center)
                             
                             BubbleView{
                                 
-                                if videoManager.news.count == 0 {
-                                    LoadingView()
-                                }
-                                else{
-                                    
+                                if let video = videoManager.specialVideo.first{
                                     LazyVStack{
                                         
-                                        ForEach(videoManager.news) { newspaper in
-                                            
-                                            NavigationLink(
-                                                destination: WebView(url: newspaper.url),
-                                                label:
-                                                {
-                                                    HorizontalNewsView      (newspaper:             newspaper)
+                                        NavigationLink(
+                                            destination: SingleSpecialView(video: video),
+                                            label: {
+                                                
+                                                HStack{
+                                                    
+                                                    VStack {
+                                                        
+                                                        Text(video.title)
+                                                            .font(.custom("Verdana", size: 15))
+                                                            .bold()
+                                                            .frame(width: 170, alignment: .leading)
+                                                        
+                                                        Text(video.summary)
+                                                            .font(.custom("Verdana", size: 13))
+                                                            .frame(width: 170)
+                                                    }
+                                                    .frame(width: 180)
+                                                    
+                                                    WebImage(url: URL(string: video.image))
+                                                        .resizable()
+                                                        .frame(width: 65, height: 65)
+                                                        .cornerRadius(10)
+                                                    
+                                                    Image(systemName: "chevron.right")
+                                                        .foregroundColor(.lightGray2)
+                                                        .padding(.leading, 5)
                                                 }
-                                            )
-                                        }
+                                                .frame(height: UIScreen.main.bounds.height / 6)
+                                            })
                                     }
+                                }
+                                else {
+                                    
+                                    LoadingView()
+                                }
+                            }
+                            .padding(.bottom, 40)
+                            
+                            Text("Article of the Month:")
+                                .font(.custom("Verdana", size: 18))
+                                .foregroundColor(.black)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            
+                            BubbleView{
+                                if let article = videoManager.specialArticle.first{
+                                    LazyVStack{
+                                        
+                                        NavigationLink(
+                                            destination: DisplayView(chosenArticle: article),
+                                            label: {
+                                                    
+                                                VStack{
+                                                    
+                                                        WebImage(url: URL(string: article.image))
+                                                            .resizable()
+                                                            .frame(width: UIScreen.main.bounds.width / 1.3, height: UIScreen.main.bounds.height / 5)
+                                                            .cornerRadius(10)
+                                                    
+                                                        Text(article.title)
+                                                            .font(.custom("Verdana", size: 18))
+                                                            .bold()
+                                                            .frame(width: UIScreen.main.bounds.width / 1.3, alignment: .leading)
+                                                            .padding(.bottom, 2)
+                                                        
+                                                        Text("By: \(article.author)")
+                                                            .font(.custom("Verdana", size: 15))
+                                                            .frame(width: UIScreen.main.bounds.width / 1.3, alignment: .leading)
+                                                }
+                                                .frame(height: UIScreen.main.bounds.height / 2.6)
+                                            })
+                                    }
+                                }
+                                else {
+                                    LoadingView()
                                 }
                             }
                             .padding(.bottom, 40)
@@ -99,6 +185,7 @@ struct HomeView: View {
                             VStack {
                                 
                                 Text("Resources:")
+                                    .font(.custom("Verdana", size: 18))
                                     .foregroundColor(.black)
                                     .bold()
                                     .multilineTextAlignment(.center)
@@ -120,96 +207,36 @@ struct HomeView: View {
                             }
                             .padding(.bottom, 40)
                             
-                            Text("Video of the Month:")
+                            Text("Last Month's News:")
+                                .font(.custom("Verdana", size: 18))
                                 .foregroundColor(.black)
                                 .bold()
                                 .multilineTextAlignment(.center)
                             
                             BubbleView{
                                 
-                                if let video = videoManager.specialVideo.first{
-                                    LazyVStack{
-                                        
-                                        NavigationLink(
-                                            destination: SingleSpecialView(video: video),
-                                            label: {
-                                                
-                                                HStack{
-                                                    
-                                                    VStack {
-                                                        
-                                                        Text(video.title)
-                                                            .font(.system(size: 12, weight: .bold))
-                                                        
-                                                        Text(video.summary)
-                                                            .font(.system(size: 12))
-                                                    }
-                                                    .frame(width: 180)
-                                                    
-                                                    WebImage(url: URL(string: video.image))
-                                                        .resizable()
-                                                        .frame(width: 50, height: 50)
-                                                        .cornerRadius(10)
-                                                    
-                                                    Image(systemName: "chevron.right")
-                                                        .foregroundColor(.lightGray2)
-                                                        .padding(.leading, 2)
-                                                }
-                                                .frame(height: UIScreen.main.bounds.height / 6)
-                                            })
-                                    }
+                                if videoManager.news.count == 0 {
+                                    LoadingView()
                                 }
-                                else {
+                                else{
                                     
-                                    LoadingView()
-                                }
-                            }
-                            .padding(.bottom, 40)
-                            
-                            Text("Article of the Month:")
-                                .foregroundColor(.black)
-                                .bold()
-                                .multilineTextAlignment(.center)
-                            
-                            BubbleView{
-                                if let article = videoManager.specialArticle.first{
                                     LazyVStack{
                                         
-                                        NavigationLink(
-                                            destination: DisplayView(chosenArticle: article),
-                                            label: {
-                                                
-                                                HStack{
-                                                    
-                                                    VStack {
-                                                        
-                                                        Text(article.title)
-                                                            .font(.system(size: 12, weight: .bold))
-                                                            .padding(.bottom, 2)
-                                                        
-                                                        Text("By: \(article.author)")
-                                                            .font(.system(size: 12))
-                                                            .frame(width: 180, alignment: .leading)
-                                                    }
-                                                    .frame(width: 180)
-                                                    
-                                                    WebImage(url: URL(string: article.image))
-                                                        .resizable()
-                                                        .frame(width: 50, height: 50)
-                                                        .cornerRadius(10)
-                                                    
-                                                    Image(systemName: "chevron.right")
-                                                        .foregroundColor(.lightGray2)
-                                                        .padding(.leading, 2)
+                                        ForEach(videoManager.news){ newspaper in
+                                            
+                                            NavigationLink(
+                                                destination: WebView(url: newspaper.url),
+                                                label:
+                                                {
+                                                    HorizontalNewsView(newspaper:newspaper)
                                                 }
-                                                .frame(height: UIScreen.main.bounds.height / 6)
-                                            })
+                                            )
+                                        }
                                     }
                                 }
-                                else {
-                                    LoadingView()
-                                }
                             }
+                            
+                            
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.bottom, UIScreen.main.bounds.height / 8.7)
@@ -235,9 +262,7 @@ struct HomeView: View {
                 
                 self.videoManager.fetchSpecialArticle()
 
-                
                 self.videoManager.fetchNews()
-                
             }
             .alert(isPresented: $notConnected) { () -> Alert in
                 Alert(title: Text("No Internet Connection"),
