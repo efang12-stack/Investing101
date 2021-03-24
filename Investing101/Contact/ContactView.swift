@@ -54,8 +54,8 @@ struct ContactView: View {
                                     .font(.custom("Verdana", size:16))
 
                             }
-                            .padding([.top, .bottom], 14)
-                            .padding([.leading, .trailing], 40)
+                    .padding(.vertical, 14)
+                    .padding(.horizontal, 40)
                             .background(
                             
                             Capsule()

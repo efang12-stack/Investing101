@@ -34,7 +34,7 @@ struct ArticleView: View {
                 
                 VStack{
                 
-                    LoadingView()
+                    ProgressView()
                 
                     Spacer()
                 }

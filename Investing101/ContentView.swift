@@ -35,16 +35,14 @@ struct ContentView: View {
                     Text("Saved")
                 }
             
-            
             ContactView()
                 .tabItem {
                     Image(systemName: "phone")
                     Text("Contact Us")
                 }
-
         }
         .accentColor(.black)
-}
+    }
 }
 
 

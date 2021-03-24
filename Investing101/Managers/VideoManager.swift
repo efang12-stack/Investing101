@@ -39,7 +39,7 @@ class VideoManager: ObservableObject {
         }
     }
     
-    func fetchSpecial() {
+    func fetchSpecialVideo() {
         db.collection("special").getDocuments { (querySnapshot, error) in
           guard let documents = querySnapshot?.documents else {
             print("No videos")

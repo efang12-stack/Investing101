@@ -15,14 +15,11 @@ struct DisplayView: View {
     
     var body: some View {
         
-    
-     
                 VStack{
                     
                         ScrollView{
 
                             VStack {
-
 
                                 Text(chosenArticle.title)
                                     .font(.custom("Verdana", size: 28))
@@ -36,10 +33,9 @@ struct DisplayView: View {
                                     .cornerRadius(5)
                                     .padding(.horizontal, 20)
                                     
-
                                 HStack {
 
-                                    Text("by "+(chosenArticle.author))
+                                    Text("by \(chosenArticle.author)")
                                         .foregroundColor(Color.darkerGray)
                                         .font(.custom("Verdana", size: 17))
                                         .frame(width: 330, alignment: .leading)
@@ -64,9 +60,6 @@ struct DisplayView: View {
                                 Spacer()
                             }
                         }
-                        
- 
-        
                 }
                 .navigationBarTitle(chosenArticle.category, displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {

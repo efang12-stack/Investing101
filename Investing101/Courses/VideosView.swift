@@ -78,7 +78,7 @@ struct VideosView: View {
                     
                     VStack{
                     
-                        LoadingView()
+                        ProgressView()
                     
                         Spacer()
                     }

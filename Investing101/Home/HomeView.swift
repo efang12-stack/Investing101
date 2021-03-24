@@ -12,16 +12,14 @@ import Network
 struct HomeView: View {
         
     @ObservedObject var videoManager = VideoManager()
-    
-    @State var chosenArticle: Article = Article()
-    @State var chosenCourse: Course = Course()
+
     @State var notConnected = false
     
     var resources: [Resource] = [
-        Resource(image: "yahoo", name: "Yahoo Finance", url: "https://finance.yahoo.com"),
-        Resource(image: "investopedia", name: "Investopedia", url: "https://www.investopedia.com"),
-        Resource(image: "morningstar", name: "Morningstar", url: "https://www.morningstar.com"),
-        Resource(image: "marketwatch", name: "Market Watch", url: "https://www.marketwatch.com")
+        .init(image: "yahoo", name: "Yahoo Finance", url: "https://finance.yahoo.com"),
+        .init(image: "investopedia", name: "Investopedia", url: "https://www.investopedia.com"),
+        .init(image: "morningstar", name: "Morningstar", url: "https://www.morningstar.com"),
+        .init(image: "marketwatch", name: "Market Watch", url: "https://www.marketwatch.com")
     ]
     
     let monitor = NWPathMonitor()
@@ -36,7 +34,13 @@ struct HomeView: View {
                 VStack {
                     
                     Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color.darkGreen, Color.lightGreen]), startPoint: .bottomLeading, endPoint: .topTrailing))
+                    .fill(LinearGradient(
+                            gradient: Gradient(colors:
+                                                [
+                                                    Color.darkGreen,
+                                                    Color.lightGreen
+                                                ]),
+                            startPoint: .bottomLeading, endPoint: .topTrailing))
                         .frame(height: UIScreen.main.bounds.height / 3)
                         .overlay(
                             
@@ -46,8 +50,7 @@ struct HomeView: View {
                                 
                                 Group{
                                     
-                                    Text("It's A Great Day To")+Text("\nInvest!")
-                                        .bold()
+                                    Text("It's A Great Day To")+Text("\nInvest!").bold()
                                 }
                                 .foregroundColor(.white)
                                 .font(.custom("Verdana", size: 24))
@@ -67,15 +70,14 @@ struct HomeView: View {
                         Spacer()
                         
                         NavigationLink(
-                        destination: WritersView(),
-                        label: {
-                            Image(systemName: "person.circle")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.width / 12, height: UIScreen.main.bounds.width / 12)
-                                .foregroundColor(.white)
-                                .padding([.trailing, .top], 25)
-                                .padding(.top, 20)
-                        })
+                            destination: WritersView()){
+                                Image(systemName: "person.circle")
+                                    .resizable()
+                                    .frame(width: UIScreen.main.bounds.width / 12, height: UIScreen.main.bounds.width / 12)
+                                    .foregroundColor(.white)
+                                    .padding([.trailing, .top], 25)
+                                    .padding(.top, 20)
+                        }
                     }
                     
                     Spacer()
@@ -83,8 +85,7 @@ struct HomeView: View {
                    
                 VStack {
                     
-                    Rectangle()
-                        .fill(Color.clear)
+                    Spacer()
                         .frame(height: UIScreen.main.bounds.height / 4)
                     
                     ScrollView{
@@ -136,7 +137,7 @@ struct HomeView: View {
                                 }
                                 else {
                                     
-                                    LoadingView()
+                                    ProgressView()
                                 }
                             }
                             .padding(.bottom, 40)
@@ -177,7 +178,7 @@ struct HomeView: View {
                                     }
                                 }
                                 else {
-                                    LoadingView()
+                                    ProgressView()
                                 }
                             }
                             .padding(.bottom, 40)
@@ -216,7 +217,7 @@ struct HomeView: View {
                             BubbleView{
                                 
                                 if videoManager.news.count == 0 {
-                                    LoadingView()
+                                    ProgressView()
                                 }
                                 else{
                                     
@@ -258,13 +259,13 @@ struct HomeView: View {
                     }
                 }
                 
-                self.videoManager.fetchSpecial()
+                self.videoManager.fetchSpecialVideo()
                 
                 self.videoManager.fetchSpecialArticle()
 
                 self.videoManager.fetchNews()
             }
-            .alert(isPresented: $notConnected) { () -> Alert in
+            .alert(isPresented: $notConnected) { 
                 Alert(title: Text("No Internet Connection"),
                 message: Text("Check Your Network Connection and Try Again."),
                 dismissButton: .cancel())

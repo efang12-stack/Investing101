@@ -21,7 +21,7 @@
 		AA4EA04C25FA9D3000C06DC5 /* ArticleCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EA04B25FA9D3000C06DC5 /* ArticleCourseView.swift */; };
 		AA4EA05925FAA1CB00C06DC5 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EA05825FAA1CB00C06DC5 /* ArticleView.swift */; };
 		AA4EA07A25FAE9DF00C06DC5 /* HorizontalWriterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4EA07925FAE9DF00C06DC5 /* HorizontalWriterView.swift */; };
-		AA58D9E525C10AE500383AFD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58D9E425C10AE500383AFD /* LoadingView.swift */; };
+		AA5A6D7B25FC27000015AAA1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5A6D7A25FC27000015AAA1 /* Launch Screen.storyboard */; };
 		AA65126525B133DD00D84D49 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65126425B133DD00D84D49 /* HomeView.swift */; };
 		AA65126F25B134A700D84D49 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65126E25B134A700D84D49 /* ContactView.swift */; };
 		AA65127925B13D1700D84D49 /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65127825B13D1700D84D49 /* CoursesView.swift */; };
@@ -89,7 +89,7 @@
 		AA4EA04B25FA9D3000C06DC5 /* ArticleCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCourseView.swift; sourceTree = "<group>"; };
 		AA4EA05825FAA1CB00C06DC5 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		AA4EA07925FAE9DF00C06DC5 /* HorizontalWriterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWriterView.swift; sourceTree = "<group>"; };
-		AA58D9E425C10AE500383AFD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		AA5A6D7A25FC27000015AAA1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AA65126425B133DD00D84D49 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AA65126E25B134A700D84D49 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		AA65127825B13D1700D84D49 /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
@@ -273,8 +273,8 @@
 				AAAE396725AE9AA6009CF83A /* Investing101App.swift */,
 				AA282EB425B228A200B9B97B /* AppDelegate.swift */,
 				AAAE396925AE9AA6009CF83A /* ContentView.swift */,
+				AA5A6D7A25FC27000015AAA1 /* Launch Screen.storyboard */,
 				AA9F4A8525E743E300602D24 /* WebView.swift */,
-				AA58D9E425C10AE500383AFD /* LoadingView.swift */,
 				AA5A6D3C25FBD1910015AAA1 /* Home */,
 				AA430EB625C7707900F01EE9 /* SavedManagers */,
 				AA9F4A6F25E6DABB00602D24 /* Horizontal Views */,
@@ -462,6 +462,7 @@
 			files = (
 				AAAE396F25AE9AA7009CF83A /* Preview Assets.xcassets in Resources */,
 				AAAE396C25AE9AA7009CF83A /* Assets.xcassets in Resources */,
+				AA5A6D7B25FC27000015AAA1 /* Launch Screen.storyboard in Resources */,
 				AA282E9C25B2263700B9B97B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,7 +608,6 @@
 				AA8778EE25B28CCA0002AE29 /* VideoManager.swift in Sources */,
 				AA4EA02A25F9768E00C06DC5 /* Resource.swift in Sources */,
 				AA282EB525B228A200B9B97B /* AppDelegate.swift in Sources */,
-				AA58D9E525C10AE500383AFD /* LoadingView.swift in Sources */,
 				AA65127925B13D1700D84D49 /* CoursesView.swift in Sources */,
 				AA83196D25DEEB0200449876 /* SingleVideoView.swift in Sources */,
 				AA9F4A8625E743E300602D24 /* WebView.swift in Sources */,
@@ -783,7 +783,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Investing101/Preview Content\"";
 				DEVELOPMENT_TEAM = 9VQUKD672F;
 				ENABLE_PREVIEWS = YES;
@@ -807,7 +807,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Investing101/Preview Content\"";
 				DEVELOPMENT_TEAM = 9VQUKD672F;
 				ENABLE_PREVIEWS = YES;
