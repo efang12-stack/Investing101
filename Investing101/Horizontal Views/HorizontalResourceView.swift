@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+
 
 struct HorizontalResourceView: View {
     
@@ -25,7 +25,8 @@ struct HorizontalResourceView: View {
                 Image(resource.image)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: UIScreen.main.bounds.height / 12.5, height: UIScreen.main.bounds.height / 12.5)
+                    .frame(width: UIScreen.main.bounds.height * (2/25), height: UIScreen.main.bounds.height * (2/25))
+                    .clipped()
                     .cornerRadius(10)
                 
                 Image(systemName: "chevron.right")

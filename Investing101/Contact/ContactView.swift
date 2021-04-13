@@ -23,11 +23,11 @@ struct ContactView: View {
                     
                     Rectangle()
                         .fill(Color.clear)
-                        .frame(height: UIScreen.main.bounds.height / 11)
+                        .frame(height: UIScreen.main.bounds.height * (1/11))
                     
                     Image("logo")
                         .resizable()
-                        .frame(width: UIScreen.main.bounds.width / 1.5, height: UIScreen.main.bounds.width / 1.5)
+                        .frame(width: UIScreen.main.bounds.width * (2/3), height: UIScreen.main.bounds.width * (2/3))
                         .padding(.top, -3)
                     
                     VStack{
@@ -41,7 +41,7 @@ struct ContactView: View {
                             .font(.custom("Verdana", size: 15))
                             .foregroundColor(.black)
                             .multilineTextAlignment(.center)
-                            .frame(width: UIScreen.main.bounds.width / 1.2)
+                            .frame(width: UIScreen.main.bounds.width * (5/6))
                     }
                     .padding(.bottom, 25)
                     
@@ -68,7 +68,9 @@ struct ContactView: View {
                             .alert(isPresented: self.$alertNoMail) {
                                 Alert(title: Text("Mail App Not Setup"), dismissButton: .cancel())
                             }
+                    
                 }
+                .padding(.bottom, 20)
             }
            
         

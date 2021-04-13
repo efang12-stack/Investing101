@@ -1,18 +1,16 @@
 //
-//  HorizontalCourseView.swift
+//  HorizontalCourseSoonView.swift
 //  Investing101
 //
-//  Created by Ethan on 2/24/21.
+//  Created by Ethan on 4/2/21.
 //
 
 import SwiftUI
 
-struct HorizontalCourseView: View {
+struct HorizontalCourseSoonView: View {
     
     var course: Course
-    
     var body: some View {
-        
         VStack {
             
             HStack{
@@ -30,19 +28,15 @@ struct HorizontalCourseView: View {
                     Text(course.courseTitle)
                         .font(.custom("Verdana", size: 15))
                         .bold()
-                        .frame(width: 180, alignment: .leading)
+                        .frame(width: 215, alignment: .leading)
                         .padding(.bottom, 1)
                     
                     Text(course.description)
                         .font(.custom("Verdana", size: 14))
                         .foregroundColor(Color.darkGray)
-                        .frame(width: 180, alignment: .leading)
+                        .frame(width: 215, alignment: .leading)
                 }
                 
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.lightGray2)
-                    .padding(.leading, 15)
-                    .font(.headline)
             }
             
             Divider()
@@ -52,8 +46,8 @@ struct HorizontalCourseView: View {
     }
 }
 
-struct HorizontalCourseView_Previews: PreviewProvider {
+struct HorizontalCourseSoonView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalCourseView(course: Course())
+        HorizontalCourseSoonView(course: Course())
     }
 }

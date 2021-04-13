@@ -29,186 +29,108 @@ struct HomeView: View {
         
         NavigationView{
             
-            ZStack{
-                    
-                VStack {
-                    
-                    Rectangle()
-                    .fill(LinearGradient(
-                            gradient: Gradient(colors:
-                                                [
-                                                    Color.darkGreen,
-                                                    Color.lightGreen
-                                                ]),
-                            startPoint: .bottomLeading, endPoint: .topTrailing))
-                        .frame(height: UIScreen.main.bounds.height / 3)
-                        .overlay(
-                            
-                            VStack{
-                                
-                                Spacer()
-                                
-                                Group{
-                                    
-                                    Text("It's A Great Day To")+Text("\nInvest!").bold()
-                                }
-                                .foregroundColor(.white)
-                                .font(.custom("Verdana", size: 24))
-                                .multilineTextAlignment(.center)
-                                
-                                Spacer()
-                            }
-                        )
-                    
-                    Spacer()
-                }
+            VStack{
                 
-                VStack{
+                Spacer()
+                    .frame(height: UIScreen.main.bounds.height / 4)
+                
+                ScrollView{
                     
-                    HStack {
+                    VStack {
                         
-                        Spacer()
+                        Text("Where To Start:")
+                            .font(.custom("Verdana", size: 18))
+                            .foregroundColor(.white)
+                            .bold()
+                            .multilineTextAlignment(.center)
                         
-                        NavigationLink(
-                            destination: WritersView()){
-                                Image(systemName: "person.circle")
-                                    .resizable()
-                                    .frame(width: UIScreen.main.bounds.width / 12, height: UIScreen.main.bounds.width / 12)
-                                    .foregroundColor(.white)
-                                    .padding([.trailing, .top], 25)
-                                    .padding(.top, 20)
+                        BubbleView{
+                            
+                            if let video = videoManager.specialVideo.first{
+                                LazyVStack{
+                                    
+                                    NavigationLink(
+                                        destination: SingleSpecialView(video: video)){
+                                            
+                                            HStack{
+                                                
+                                                VStack {
+                                                    
+                                                    Text(video.title)
+                                                        .font(.custom("Verdana", size: 15))
+                                                        .bold()
+                                                        .frame(width: 170, alignment: .leading)
+                                                    
+                                                    Text(video.summary)
+                                                        .font(.custom("Verdana", size: 13))
+                                                        .frame(width: 170)
+                                                }
+                                                .frame(width: 180)
+                                                
+                                                WebImage(url: URL(string: video.image))
+                                                    .resizable()
+                                                    .scaledToFill()
+                                                    .frame(width: 65, height: 65)
+                                                    .cornerRadius(10)
+                                                
+                                                Image(systemName: "chevron.right")
+                                                    .foregroundColor(.lightGray2)
+                                                    .padding(.leading, 5)
+                                            }
+                                            .frame(height: UIScreen.main.bounds.height / 6)
+                                        }
+                                }
+                            }
+                            else {
+                                
+                                ProgressView()
+                            }
                         }
-                    }
-                    
-                    Spacer()
-                }
-                   
-                VStack {
-                    
-                    Spacer()
-                        .frame(height: UIScreen.main.bounds.height / 4)
-                    
-                    ScrollView{
+                        .padding(.bottom, 40)
+                        
+                        Text("Article of the Month:")
+                            .font(.custom("Verdana", size: 18))
+                            .foregroundColor(.black)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                        
+                        BubbleView{
+                            if let article = videoManager.specialArticle.first{
+                                LazyVStack{
+                                    
+                                    NavigationLink(
+                                        destination: DisplayView(chosenArticle: article)){
+                                                
+                                            VStack{
+                                                
+                                                    WebImage(url: URL(string: article.image))
+                                                        .resizable()
+                                                        .frame(width: UIScreen.main.bounds.width / 1.3, height: UIScreen.main.bounds.height / 5)
+                                                        .cornerRadius(10)
+                                                
+                                                    Text(article.title)
+                                                        .font(.custom("Verdana", size: 18))
+                                                        .bold()
+                                                        .frame(width: UIScreen.main.bounds.width / 1.3, alignment: .leading)
+                                                        .padding(.bottom, 2)
+                                                    
+                                                    Text("By: \(article.author)")
+                                                        .font(.custom("Verdana", size: 15))
+                                                        .frame(width: UIScreen.main.bounds.width / 1.3, alignment: .leading)
+                                            }
+                                            .frame(height: UIScreen.main.bounds.height / 2.6)
+                                        }
+                                }
+                            }
+                            else {
+                                ProgressView()
+                            }
+                        }
+                        .padding(.bottom, 40)
                         
                         VStack {
                             
-                            Text("Where To Start:")
-                                .font(.custom("Verdana", size: 18))
-                                .foregroundColor(.white)
-                                .bold()
-                                .multilineTextAlignment(.center)
-                            
-                            BubbleView{
-                                
-                                if let video = videoManager.specialVideo.first{
-                                    LazyVStack{
-                                        
-                                        NavigationLink(
-                                            destination: SingleSpecialView(video: video),
-                                            label: {
-                                                
-                                                HStack{
-                                                    
-                                                    VStack {
-                                                        
-                                                        Text(video.title)
-                                                            .font(.custom("Verdana", size: 15))
-                                                            .bold()
-                                                            .frame(width: 170, alignment: .leading)
-                                                        
-                                                        Text(video.summary)
-                                                            .font(.custom("Verdana", size: 13))
-                                                            .frame(width: 170)
-                                                    }
-                                                    .frame(width: 180)
-                                                    
-                                                    WebImage(url: URL(string: video.image))
-                                                        .resizable()
-                                                        .frame(width: 65, height: 65)
-                                                        .cornerRadius(10)
-                                                    
-                                                    Image(systemName: "chevron.right")
-                                                        .foregroundColor(.lightGray2)
-                                                        .padding(.leading, 5)
-                                                }
-                                                .frame(height: UIScreen.main.bounds.height / 6)
-                                            })
-                                    }
-                                }
-                                else {
-                                    
-                                    ProgressView()
-                                }
-                            }
-                            .padding(.bottom, 40)
-                            
-                            Text("Article of the Month:")
-                                .font(.custom("Verdana", size: 18))
-                                .foregroundColor(.black)
-                                .bold()
-                                .multilineTextAlignment(.center)
-                            
-                            BubbleView{
-                                if let article = videoManager.specialArticle.first{
-                                    LazyVStack{
-                                        
-                                        NavigationLink(
-                                            destination: DisplayView(chosenArticle: article),
-                                            label: {
-                                                    
-                                                VStack{
-                                                    
-                                                        WebImage(url: URL(string: article.image))
-                                                            .resizable()
-                                                            .frame(width: UIScreen.main.bounds.width / 1.3, height: UIScreen.main.bounds.height / 5)
-                                                            .cornerRadius(10)
-                                                    
-                                                        Text(article.title)
-                                                            .font(.custom("Verdana", size: 18))
-                                                            .bold()
-                                                            .frame(width: UIScreen.main.bounds.width / 1.3, alignment: .leading)
-                                                            .padding(.bottom, 2)
-                                                        
-                                                        Text("By: \(article.author)")
-                                                            .font(.custom("Verdana", size: 15))
-                                                            .frame(width: UIScreen.main.bounds.width / 1.3, alignment: .leading)
-                                                }
-                                                .frame(height: UIScreen.main.bounds.height / 2.6)
-                                            })
-                                    }
-                                }
-                                else {
-                                    ProgressView()
-                                }
-                            }
-                            .padding(.bottom, 40)
-                            
-                            VStack {
-                                
-                                Text("Resources:")
-                                    .font(.custom("Verdana", size: 18))
-                                    .foregroundColor(.black)
-                                    .bold()
-                                    .multilineTextAlignment(.center)
-                                
-                                BubbleView{
-                                    
-                                    LazyVStack{
-                                        
-                                        ForEach(resources) { resource in
-                                            
-                                            NavigationLink(
-                                                destination: WebView(url: resource.url),
-                                                label: {
-                                                    HorizontalResourceView(resource: resource)
-                                                })
-                                        }
-                                    }
-                                }
-                            }
-                            .padding(.bottom, 40)
-                            
-                            Text("Last Month's News:")
+                            Text("Resources:")
                                 .font(.custom("Verdana", size: 18))
                                 .foregroundColor(.black)
                                 .bold()
@@ -216,34 +138,105 @@ struct HomeView: View {
                             
                             BubbleView{
                                 
-                                if videoManager.news.count == 0 {
-                                    ProgressView()
-                                }
-                                else{
+                                LazyVStack{
                                     
-                                    LazyVStack{
+                                    ForEach(resources) { resource in
                                         
-                                        ForEach(videoManager.news){ newspaper in
-                                            
-                                            NavigationLink(
-                                                destination: WebView(url: newspaper.url),
-                                                label:
-                                                {
-                                                    HorizontalNewsView(newspaper:newspaper)
-                                                }
-                                            )
-                                        }
+                                        NavigationLink(
+                                            destination: WebView(url: resource.url)){
+                                                HorizontalResourceView(resource: resource)
+                                            }
                                     }
                                 }
                             }
-                            
-                            
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding(.bottom, UIScreen.main.bounds.height / 8.7)
+                        .padding(.bottom, 40)
+                        
+                        Text("Last Month's News:")
+                            .font(.custom("Verdana", size: 18))
+                            .foregroundColor(.black)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                        
+                        BubbleView{
+                            
+                            if videoManager.news.count == 0 {
+                                ProgressView()
+                            }
+                            else{
+                                
+                                LazyVStack{
+                                    
+                                    ForEach(videoManager.news){ newspaper in
+                                        
+                                        NavigationLink(
+                                            destination: WebView(url: newspaper.url)){
+                                                HorizontalNewsView(newspaper:newspaper)
+                                            }
+                                    }
+                                }
+                            }
+                        }
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, UIScreen.main.bounds.height / 8.7)
                 }
             }
+                .background(
+                    
+                    VStack {
+                        
+                        Rectangle()
+                            .fill(LinearGradient(
+                                gradient: Gradient(colors:
+                                    [
+                                        Color.darkGreen,
+                                        Color.lightGreen
+                                    ]),
+                                startPoint: .bottomLeading, endPoint: .topTrailing))
+                            .frame(height: UIScreen.main.bounds.height / 3)
+                            .overlay(
+                                
+                                VStack{
+                                    
+                                    Spacer()
+                                    
+                                    Group{
+                                        Text("It's A Great Day To")+Text("\nInvest!").bold()
+                                    }
+                                    .foregroundColor(.white)
+                                    .font(.custom("Verdana", size: 24))
+                                    .multilineTextAlignment(.center)
+                                    
+                                    Spacer()
+                                }
+                            )
+                        
+                        Spacer()
+                    }
+                )
+                .overlay(
+                    
+                    VStack{
+                        
+                        HStack {
+                            
+                            Spacer()
+                            
+                            NavigationLink(
+                                destination: WritersView()){
+                                    Image(systemName: "person.circle")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.width / 12, height: UIScreen.main.bounds.width / 12)
+                                        .foregroundColor(.white)
+                                        .padding([.trailing, .top], 25)
+                                        .padding(.top, 20)
+                            }
+                        }
+                        
+                        Spacer()
+                    }
+            )
             .edgesIgnoringSafeArea(.all)
             .onAppear{
                 

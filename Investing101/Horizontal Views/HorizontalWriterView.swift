@@ -9,43 +9,53 @@ import SwiftUI
 
 struct HorizontalWriterView: View {
     
-    var image: String
-    var name: String
-//    var link: String
+    var image1: String
+    var name1: String
+    var image2: String
+    var name2: String
+    
     var body: some View {
         
-        VStack{
-            Image(image)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 110, height: 140)
-                .cornerRadius(5)
+        HStack(spacing: UIScreen.main.bounds.width * (1/5)){
             
-            Text(name)
-                .font(.custom("Verdana", size: 14))
-                .foregroundColor(.black)
-                .padding(.bottom, 3)
+            VStack{
+                
+                Image(image1)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 110, height: 140)
+                    .clipped()
+                    .cornerRadius(5)
+                
+                Text(name1)
+                    .font(.custom("Verdana", size: 14))
+                    .frame(width: 110)
+                    .foregroundColor(.black)
+                    .padding(.bottom, 3)
+            }
             
-//            Link(destination: URL(string: link)!, label: {
-//                
-//                HStack {
-//                    Text("LinkedIn")
-//                        .font(.custom("Verdana", size: 16))
-//                        .foregroundColor(Color.darkBlue)
-//                    
-//                    
-//                    
-//                    Image("linkedin")
-//                        .resizable()
-//                        .frame(width: 43, height: 35)
-//                }
-//            })
+            VStack{
+                
+                Image(image2)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 110, height: 140)
+                    .clipped()
+                    .cornerRadius(5)
+                
+                Text(name2)
+                    .font(.custom("Verdana", size: 14))
+                    .frame(width: 110)
+                    .foregroundColor(.black)
+                    .padding(.bottom, 3)
+            }
         }
+        .padding(.bottom, 20)
     }
 }
 
 struct HorizontalWriterView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalWriterView(image: "", name: "")
+        HorizontalWriterView(image1: "", name1: "", image2: "", name2: "")
     }
 }

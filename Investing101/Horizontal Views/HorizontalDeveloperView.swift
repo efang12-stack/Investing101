@@ -22,7 +22,9 @@ struct HorizontalDeveloperView: View {
                 
                 Image(image)
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 100, height: 120)
+                    .clipped()
                     .cornerRadius(5)
                     .padding(.leading, 20)
                 
@@ -51,20 +53,18 @@ struct HorizontalDeveloperView: View {
                 .foregroundColor(.black)
                 .frame(width: 270)
             
-            Link(destination: URL(string: link)!, label: {
+            Link(destination: URL(string: link)!){
                 
                 HStack {
                     Text("LinkedIn")
                         .font(.custom("Verdana", size: 18))
                         .foregroundColor(Color.darkBlue)
                     
-                    
-                    
                     Image("linkedin")
                         .resizable()
                         .frame(width: 45, height: 37)
                 }
-            })
+            }
         }
         .padding(.bottom, 5)
     }

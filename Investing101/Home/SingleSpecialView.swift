@@ -23,7 +23,6 @@ struct SingleSpecialView: View {
             ScrollView{
 
                 Summary(description: video.summary, title: "Summary:")
-                
             }
             .background(Color.lightGray)
         }

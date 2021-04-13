@@ -32,8 +32,10 @@ struct Summary: View {
                 Text(description)
                     .font(.custom("Verdana", size: 16))
                     .multilineTextAlignment(.leading)
-                    .frame(width: 350)
+                    .frame(width: 360)
+                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.leading, 15)
+                
                 Spacer()
             }
             

@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct HorizontalArticleView: View {
     
     var article: Article
+    
     var body: some View {
         
         HStack {
@@ -24,7 +25,7 @@ struct HorizontalArticleView: View {
                         .bold()
                         .frame(width: 200, height: 90, alignment: .leading)
                     
-                    Text("By "+(article.author))
+                    Text("By \(article.author)")
                         .foregroundColor(Color.darkGray)
                         .font(.custom("Verdana", size: 12))
                         .frame(width: 200, alignment: .leading)
@@ -35,7 +36,9 @@ struct HorizontalArticleView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)
+                    .clipped()
                     .cornerRadius(10)
+                    
 
             }
             .frame(height: 115)

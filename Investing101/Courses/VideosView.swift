@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AVKit
-import SDWebImageSwiftUI
+
 
 struct VideosView: View {
     @State var chosenCourse: Course

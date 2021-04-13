@@ -24,14 +24,14 @@ struct HorizontalNewsView: View {
                 
                 WebImage(url: URL(string: newspaper.image))
                     .resizable()
-                    .frame(width: UIScreen.main.bounds.height / 12.5, height: UIScreen.main.bounds.height / 12.5)
+                    .frame(width: UIScreen.main.bounds.height * (2/25), height: UIScreen.main.bounds.height * (2/25))
                     .cornerRadius(10)
                 
                 Image(systemName: "chevron.right")
                     .foregroundColor(.lightGray2)
                     .padding(.leading, 10)
             }
-            .frame(height: UIScreen.main.bounds.height / 11)
+            .frame(height: UIScreen.main.bounds.height * (1/11))
             
             Divider()
         }

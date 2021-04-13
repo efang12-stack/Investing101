@@ -45,14 +45,15 @@ struct WritersView: View {
                 Spacer()
                     .frame(height: 20)
                 
-                HStack(spacing: UIScreen.main.bounds.width / 5){
+                VStack{
                     
-                    HorizontalWriterView(image: "krishna", name: "Krishna Madhav")
+                    HorizontalWriterView(image1: "krishna", name1: "Krishna Madhav", image2: "gaurav", name2: "Gaurav Srivatchan")
                     
-                    HorizontalWriterView(image: "gaurav", name: "Gaurav Srivatchan")
+                    HorizontalWriterView(image1: "mason", name1: "Mason Fuller", image2: "param", name2: "Param Naik")
                     
-                    
+                    HorizontalWriterView(image1: "tangton", name1: "Victor Tangton", image2: "rishi", name2: "Rishi Nirajan")
                 }
+               
 
             }
         }

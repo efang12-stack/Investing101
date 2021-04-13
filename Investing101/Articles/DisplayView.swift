@@ -55,7 +55,7 @@ struct DisplayView: View {
                                     .foregroundColor(.lightGray2)
                                     .font(.custom("Verdana", size: 16))
                                     .frame(width: 300)
-                                    .padding(.top, 25)
+                                    .padding(.vertical, 25)
 
                                 Spacer()
                             }
@@ -106,10 +106,7 @@ struct DisplayView: View {
                 }))
                 .onAppear{
                     savedArticleManager.setArticleIDs()
-                }
-                
-               
-        
+                } 
     }
 }
 
