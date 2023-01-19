@@ -13,11 +13,11 @@ struct CoursesView: View {
     
     var courses1: [Course] = [
         Course(courseTitle: "Financial Literacy", image: "financiallit", description: "A course over the foundations of personal financial literacy (saving, budgeting, loan management, investing, etc).", dataKey: "financiallit", colorBackground1: Color.litColor1, colorBackground2: Color.litColor2),
-        Course(courseTitle: "Entrepreneurship", image: "entrepreneur", description: "Learn how to create your own business through lectures over idea valuation, operations, and cost-management.", dataKey: "entrepreneurship", colorBackground1: Color.entreColor1, colorBackground2: Color.entreColor2)
+        Course(courseTitle: "Entrepreneurship", image: "entrepreneur", description: "Learn how to create your own business through lectures over idea valuation, operations, and cost-management.", dataKey: "entrepreneurship", colorBackground1: Color.entreColor1, colorBackground2: Color.entreColor2),
+        Course(courseTitle: "Investing", image: "investing", description: "Introductory lessons over investing, equity analysis and other concepts to get you started in the stock market.", dataKey: "investment", colorBackground1: Color.investColor1, colorBackground2: Color.investColor2)
     ]
     
     var courses2: [Course] = [
-        Course(courseTitle: "Investing", image: "investing", description: "Coming Soon...", dataKey: "investment", colorBackground1: Color.investColor1, colorBackground2: Color.investColor2),
         Course(courseTitle: "Professional Development", image: "development", description: "Coming Soon...", dataKey: "professional", colorBackground1: Color.profesColor1, colorBackground2: Color.profesColor2)
     ]
     

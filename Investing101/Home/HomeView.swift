@@ -60,17 +60,19 @@ struct HomeView: View {
                                                         .font(.custom("Verdana", size: 15))
                                                         .bold()
                                                         .frame(width: 170, alignment: .leading)
+                                                        .padding(.bottom, 2)
                                                     
                                                     Text(video.summary)
                                                         .font(.custom("Verdana", size: 13))
                                                         .frame(width: 170)
                                                 }
                                                 .frame(width: 180)
+                                                .padding(.trailing, 7)
                                                 
                                                 WebImage(url: URL(string: video.image))
                                                     .resizable()
                                                     .scaledToFill()
-                                                    .frame(width: 65, height: 65)
+                                                    .frame(width: 80, height: 80)
                                                     .cornerRadius(10)
                                                 
                                                 Image(systemName: "chevron.right")
